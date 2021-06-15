@@ -52,13 +52,13 @@ public class Arrow : MonoBehaviour
         {
             var t = Mathf.Log(1f * i / (arrowNodes.Count - 1) + 1f, 2f);
 
-            //arrowNodes[i].position =
-            //    Mathf.Pow(1 - t, 3) * controlPoints[0] +
-            //    3 * Mathf.Pow(1 - t, 2) * controlPoints[1] +
-            //    3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2] +
-            //      Mathf.Pow(t, 3) * controlPoints[3];
-            Vector3 localPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
-            arrowNodes[i].position = Camera.main.WorldToScreenPoint(localPosition);
+            arrowNodes[i].position =
+                Mathf.Pow(1 - t, 3) * controlPoints[0] +
+                3 * Mathf.Pow(1 - t, 2) * controlPoints[1] +
+                3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2] +
+                  Mathf.Pow(t, 3) * controlPoints[3];
+           // Vector3 localPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
+            //arrowNodes[i].position = Camera.main.WorldToScreenPoint(localPosition);
             Debug.Log("Mouse position<" + Input.mousePosition.x + "," + Input.mousePosition.y + ">");
             Debug.Log(arrowNodes[i].position);
 

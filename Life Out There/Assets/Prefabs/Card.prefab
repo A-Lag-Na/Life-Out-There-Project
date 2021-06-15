@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2350181963228433183
+--- !u!1 &517863358591779858
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 208670469053790961}
-  - component: {fileID: 6012827523447945604}
-  - component: {fileID: 6793248835060341209}
-  - component: {fileID: 3079219987812908011}
-  - component: {fileID: 5821804627071461966}
+  - component: {fileID: 1828420055762601472}
+  - component: {fileID: 736234701788797327}
+  - component: {fileID: 1730878909598702132}
+  - component: {fileID: -9158668498200707127}
+  - component: {fileID: 6158314816378359308}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -20,47 +20,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &208670469053790961
+--- !u!224 &1828420055762601472
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350181963228433183}
+  m_GameObject: {fileID: 517863358591779858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6}
-  m_SizeDelta: {x: 200, y: 250}
+  m_AnchoredPosition: {x: -0, y: 0}
+  m_SizeDelta: {x: 175, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6012827523447945604
+--- !u!222 &736234701788797327
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350181963228433183}
+  m_GameObject: {fileID: 517863358591779858}
   m_CullTransparentMesh: 1
---- !u!114 &6793248835060341209
+--- !u!114 &1730878909598702132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350181963228433183}
+  m_GameObject: {fileID: 517863358591779858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33291066, g: 0.6792453, b: 0.0993236, a: 1}
+  m_Color: {r: 0.5657197, g: 0.8113208, b: 0.17986828, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -77,25 +77,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3079219987812908011
+--- !u!114 &-9158668498200707127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350181963228433183}
+  m_GameObject: {fileID: 517863358591779858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce6ada4e8615f914584dde56dd20795f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5821804627071461966
+--- !u!114 &6158314816378359308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350181963228433183}
+  m_GameObject: {fileID: 517863358591779858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
@@ -106,7 +106,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3079219987812908011}
+        - m_Target: {fileID: -9158668498200707127}
           m_TargetAssemblyTypeName: DragDrop, Assembly-CSharp
           m_MethodName: StartDrag
           m_Mode: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3079219987812908011}
+        - m_Target: {fileID: -9158668498200707127}
           m_TargetAssemblyTypeName: DragDrop, Assembly-CSharp
           m_MethodName: EndDrag
           m_Mode: 1

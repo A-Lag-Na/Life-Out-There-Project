@@ -5,27 +5,41 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
-    private bool isDragging = false;
-    private Vector2 startPosition;
+    private bool isSelected = false;
+    
+    public GameObject arrowEmitter;
 
 
 
     // Update is called once per frame
     void Update()
     {
-        if (isDragging)
+        if (isSelected)
         {
-            transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            arrowEmitter.SetActive(true);
+        }
+        else
+        {
+            arrowEmitter.SetActive(false);
         }
     }
 
-    public void StartDrag()
+    public void Selection()
     {
-        startPosition = transform.position;
-        isDragging = true;
+        if(isSelected == false)
+        {
+            isSelected = true;
+            transform.position = new Vector2(transform.position.x, transform.position.y + 50);
+            Debug.Log("This object is selected and its position is <" + transform.position + ">");
+        }
+        else
+        {
+            isSelected = false;
+            transform.position = new Vector2(transform.position.x, transform.position.y - 50);
+            //Debug.Log("This object is de-selected and its position is <" + transform.position + ">");
+        }
+       
+
     }
-    public void EndDrag()
-    {
-        isDragging = false;
-    }
+    
 }

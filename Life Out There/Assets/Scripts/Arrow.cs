@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
 {
     public GameObject arrowHead;
     public GameObject arrowNode;
+    public GameObject arrowEmitter;
     public int arrowNodeNum;
     public float scaleFactor = 1f;
 
@@ -20,14 +21,15 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        origin = this.GetComponent<RectTransform>();
+        origin = arrowEmitter.GetComponent<RectTransform>();
+
 
         for (int i = 0; i < arrowNodeNum; i++)
         {
-           arrowNodes.Add(Instantiate(arrowNode, this.transform).GetComponent<RectTransform>());
+           arrowNodes.Add(Instantiate(arrowNode, arrowEmitter.transform).GetComponent<RectTransform>());
         }
 
-        arrowNodes.Add(Instantiate(arrowHead, this.transform).GetComponent<RectTransform>());
+        arrowNodes.Add(Instantiate(arrowHead, arrowEmitter.transform).GetComponent<RectTransform>());
 
         arrowNodes.ForEach(a => a.GetComponent<RectTransform>().position = new Vector2(-1000, -1000));
 
@@ -45,8 +47,8 @@ public class Arrow : MonoBehaviour
 
        controlPoints[3] = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
-       controlPoints[1] = controlPoints[0] + (controlPoints[3] - controlPoints[0]) *controlPoints[0];
-       controlPoints[2] = controlPoints[0] + (controlPoints[3] - controlPoints[0]) * controlPoints[1];
+       controlPoints[1] = controlPoints[0] + (controlPoints[3] - controlPoints[0]) * controlPointFactors[0];
+       controlPoints[2] = controlPoints[0] + (controlPoints[3] - controlPoints[0]) * controlPointFactors[1];
 
         for (int i = 0; i < arrowNodes.Count; i++)
         {
@@ -54,13 +56,16 @@ public class Arrow : MonoBehaviour
 
             arrowNodes[i].position =
                 Mathf.Pow(1 - t, 3) * controlPoints[0] +
-                3 * Mathf.Pow(1 - t, 2) * controlPoints[1] +
+                3 * Mathf.Pow(1 - t, 2) * t * controlPoints[1] +
                 3 * (1 - t) * Mathf.Pow(t, 2) * controlPoints[2] +
                   Mathf.Pow(t, 3) * controlPoints[3];
-           // Vector3 localPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
+            // Vector3 localPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0f);
             //arrowNodes[i].position = Camera.main.WorldToScreenPoint(localPosition);
-            Debug.Log("Mouse position<" + Input.mousePosition.x + "," + Input.mousePosition.y + ">");
-            Debug.Log(arrowNodes[i].position);
+            arrowNodes[i].position = arrowNodes[i].position / 5f;
+            //Debug.Log("Mouse position<" + Input.mousePosition.x + "," + Input.mousePosition.y + ">");
+
+            Debug.Log("This position<" + origin.position + ">");
+            //Debug.Log("<"+arrowNodes[i].position+", " +i+ ">");
 
             if (i > 0)
             {

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aade8686806709341807de7374de48c0, type: 3}
+  m_Name: Blast
+  m_EditorClassIdentifier: 
+  cardName: Blast
+  cardType: Attack
+  cardDescription: Damage 6
+  cardCost: 1
+  artwork: {fileID: 21300000, guid: c8120867bdc4bc3479463ff93c950ca5, type: 3}

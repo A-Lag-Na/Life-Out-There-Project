@@ -434,7 +434,6 @@ GameObject:
   - component: {fileID: 500730555}
   - component: {fileID: 500730554}
   - component: {fileID: 500730553}
-  - component: {fileID: 500730552}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -462,22 +461,6 @@ RectTransform:
   m_AnchoredPosition: {x: 604, y: -117}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &500730552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500730550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888e3598a580e9a47ae0339b72b3e0ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 93413513353197798, guid: d29eef78de878334e9a7862dbfb212b1, type: 3}
-  handArea: {fileID: 1322786913}
-  UAO: {fileID: 6266717168215238, guid: 8701f167909410a41bbc2c5c3eb4a55d, type: 3}
-  UAODisplay: {fileID: 177018534}
 --- !u!114 &500730553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +505,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 500730552}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DrawCards, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -725,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968724885}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.58, y: 5.4, z: 5.54}
+  m_LocalPosition: {x: 0, y: 6, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -747,7 +730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1069247787
 AudioSource:
   m_ObjectHideFlags: 0
@@ -924,7 +907,7 @@ MonoBehaviour:
   m_StartCorner: 2
   m_StartAxis: 1
   m_CellSize: {x: 175, y: 240}
-  m_Spacing: {x: 5, y: 0}
+  m_Spacing: {x: 8, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!1 &1655041630
@@ -939,6 +922,8 @@ GameObject:
   - component: {fileID: 1655041634}
   - component: {fileID: 1655041633}
   - component: {fileID: 1655041632}
+  - component: {fileID: 1655041636}
+  - component: {fileID: 1655041635}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1022,6 +1007,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655041630}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1655041635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655041630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b184d726f637d419fc6ec306979410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCard: {fileID: 4189277651209526270, guid: 9df22dd0621bfb04fa997740f9d0f358, type: 3}
+  blockCard: {fileID: 4027126054187071333, guid: d0305c84842b24b4bb67a49f8c09d42a, type: 3}
+--- !u!114 &1655041636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655041630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237596fe7e88abe43a0006417bd0f2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 2
+  maxPlayerHealth: 2
+  playerBlock: 0
+  playerGold: 99
+  handArea: {fileID: 1322786913}
 --- !u!1 &1703481839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1114,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

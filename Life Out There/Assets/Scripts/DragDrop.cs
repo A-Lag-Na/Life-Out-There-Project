@@ -8,7 +8,7 @@ public class DragDrop : MonoBehaviour
     private bool isSelected = false;
     
     public GameObject arrowEmitter;
-
+    public GameObject cardHighlight;
 
 
     // Update is called once per frame
@@ -30,11 +30,13 @@ public class DragDrop : MonoBehaviour
         {
             isSelected = true;
             transform.position = new Vector2(transform.position.x, transform.position.y + 50);
+            cardHighlight.SetActive(true);
             Debug.Log("This object is selected and its position is <" + transform.position + ">");
         }
         else
         {
             isSelected = false;
+            cardHighlight.SetActive(false);
             transform.position = new Vector2(transform.position.x, transform.position.y - 50);
             //Debug.Log("This object is de-selected and its position is <" + transform.position + ">");
         }

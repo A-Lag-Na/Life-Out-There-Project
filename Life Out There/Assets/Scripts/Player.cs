@@ -13,9 +13,10 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerGold = 99;
     public GameObject handArea;
     #endregion
-    private Deck playerDeck = null;
+    private Deck deck = null;
     private bool playerTurn = true;
     List<GameObject> inHand = new List<GameObject>();
+    List<GameObject> playerDeck = new List<GameObject>();
     private GameObject selectedCard = null;
     //GameObject[] syringes;
 
@@ -23,11 +24,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         //syringes = new GameObject[3];
-        playerDeck = GetComponent<Deck>();
+
+       deck = GetComponent<Deck>();
+        playerDeck = deck.GetCards();
 
         for (int i = 0; i < 5; i++)
         {
-            GameObject playerCard = Instantiate(playerDeck.deck[i], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject playerCard = Instantiate(playerDeck[i], new Vector3(0, 0, 0), Quaternion.identity);
             playerCard.transform.SetParent(handArea.transform, false);
             inHand.Add(playerCard);
         }

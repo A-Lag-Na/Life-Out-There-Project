@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Deck : MonoBehaviour
@@ -11,15 +13,15 @@ public class Deck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            AddCard(attackCard);
+        }
         for (int i = 0; i < 5; i++)
         {
-            if (i < 4)
-            {
-                AddCard(attackCard);
-            }
             AddCard(blockCard);
-            
         }
+        Shuffle();
     }
 
     // Update is called once per frame
@@ -33,11 +35,22 @@ public class Deck : MonoBehaviour
         deck.Add(_card);
     }
 
-    public GameObject GetCard()
+    public List<GameObject> GetCards()
     {
-
+        return deck;
     }
 
+    public void Shuffle()
+    {
+        GameObject temp;
 
+        for (int i = 0; i < deck.Count; i++)
+        {
+            temp = deck[i];
+            int randomIndex = UnityEngine.Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
+    }
 
 }

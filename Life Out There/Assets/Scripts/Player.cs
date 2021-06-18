@@ -16,9 +16,13 @@ public class Player : MonoBehaviour
     private Deck deck = null;
     private bool playerTurn = true;
     List<GameObject> inHand = new List<GameObject>();
+    List<GameObject> inDiscardPile = new List<GameObject>();
+
     List<GameObject> playerDeck = new List<GameObject>();
     private GameObject selectedCard = null;
     //GameObject[] syringes;
+
+        
 
     // Start is called before the first frame update
     void Start()
@@ -57,9 +61,11 @@ public class Player : MonoBehaviour
 
     //    if (selectedCard == null)
     //    {
-    //        selectedCard = card;
-    //        card.transform.position = new Vector2(transform.position.x, transform.position.y + 50);
-    //        card.cardHighlight.SetActive(true);
+    //        //selectedCard = card;
+    //        //card.transform.position = new Vector2(transform.position.x, transform.position.y + 50);
+    //        //card.cardHighlight.SetActive(true);
+
+
     //    }
     //    else
     //    {
@@ -70,6 +76,7 @@ public class Player : MonoBehaviour
 
 
     //}
+
     #region Gold
     public void AddCoins(int amountOfCoins)
     {

@@ -25,6 +25,8 @@ public class ThisCard : MonoBehaviour
     public Sprite thisSprite;
     public Image thatImage;
 
+    private bool isSelected = false;
+
     // Start is called before the first frame update
     void Start()
     {

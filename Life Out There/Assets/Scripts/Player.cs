@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int playerHealth = 2;
     [SerializeField] private int maxPlayerHealth = 2;
+
     [SerializeField] private int playerBlock = 0;
     [SerializeField] private int playerGold = 99;
     public GameObject handArea;
     public TextMeshProUGUI currentHealth;
     public TextMeshProUGUI maxHealth;
+
     #endregion
     public Deck deck;
     private bool playerTurn = true;
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
         currentHealth.SetText(playerHealth.ToString());
         maxHealth.SetText(maxPlayerHealth.ToString());
 
+
+
         for (int i = 0; i < 5; i++)
         {
             GameObject playerCard =  Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -68,26 +72,27 @@ public class Player : MonoBehaviour
     //    }
     //}
 
-    //public void Selection(GameObject card)
-    //{
+    public void Selection()
+    {
+        Debug.Log("This is selected:" + this.name);
 
-    //    if (selectedCard == null)
-    //    {
-    //        //selectedCard = card;
-    //        //card.transform.position = new Vector2(transform.position.x, transform.position.y + 50);
-    //        //card.cardHighlight.SetActive(true);
-
-
-    //    }
-    //    else
-    //    {
-    //        isSelected = false;
-    //        cardHighlight.SetActive(false);
-    //        transform.position = new Vector2(transform.position.x, transform.position.y - 50);
-    //    }
+        //if ()
+        //{
+        //    selectedCard = card;
+        //    card.transform.position = new Vector2(transform.position.x, transform.position.y + 50);
+        //    card.cardHighlight.SetActive(true);
 
 
-    //}
+        //}
+        //else
+        //{
+        //    isSelected = false;
+        //    cardHighlight.SetActive(false);
+        //    transform.position = new Vector2(transform.position.x, transform.position.y - 50);
+        //}
+
+
+    }
 
     #region Gold
     public void AddCoins(int amountOfCoins)

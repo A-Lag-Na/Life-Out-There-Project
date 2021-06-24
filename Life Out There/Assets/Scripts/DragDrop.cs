@@ -16,6 +16,7 @@ public class DragDrop : MonoBehaviour
     private GameObject enemy;
     GameObject enemyLight;
     GameObject playerLight;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");

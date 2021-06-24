@@ -1,21 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class Deck : MonoBehaviour
+public class PlayerDeck : MonoBehaviour
 {
     public static List<c_Card> deck = new List<c_Card>();
-
-    public GameObject cardInDeck;
-    public GameObject cardInDeck1;
-    public GameObject cardInDeck2;
-    public GameObject cardInDeck3;
-
-    public TextMeshProUGUI deckCount;
 
     // Start is called before the first frame update
     void Start()
@@ -29,23 +18,13 @@ public class Deck : MonoBehaviour
             AddCard(c_CardDatabase.cardList[1]);
         }
 
-         UnityEngine.Debug.Log("Card:"+ c_CardDatabase.cardList[0]);
-        UnityEngine.Debug.Log("Card:" + c_CardDatabase.cardList[1]);
-
         Shuffle();
     }
 
     // Update is called once per frame
     void Update()
     {
-        deckCount.SetText(deck.Count.ToString());
-
-        if (deck.Count < 30)
-            cardInDeck3.SetActive(false);
-        if (deck.Count < 20)
-            cardInDeck2.SetActive(false);
-        if (deck.Count < 10)
-            cardInDeck1.SetActive(false);
+        
     }
 
     public void AddCard(c_Card _card)

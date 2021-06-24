@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2189136249165850304}
   - component: {fileID: 468886071812358973}
   - component: {fileID: 5986045118722831096}
-  - component: {fileID: 6365111348790152607}
+  - component: {fileID: 8162515100977291198}
   m_Layer: 6
   m_Name: Card w_ Emitter
   m_TagString: Untagged
@@ -123,7 +123,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &6365111348790152607
+--- !u!114 &8162515100977291198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,14 +132,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 93413513353197798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5754fcc03f548f04abe3940fb5049144, type: 3}
+  m_Script: {fileID: 11500000, guid: b23b8be5a24a362429f50198e927eb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
-  nameText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  manaCost: {fileID: 0}
-  cardType: {fileID: 0}
+  thisId: 0
+  id: 0
+  cost: 0
+  cardName: 
+  cardType: 
+  cardDescription: 
+  nameText: {fileID: 5093506487840762569}
+  costText: {fileID: 8296692026584560535}
+  typeText: {fileID: 3302041980464593972}
+  descText: {fileID: 4864188849762293521}
+  thisSprite: {fileID: 0}
+  thatImage: {fileID: 5591402480178412019}
 --- !u!1 &660425753059529454
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +695,7 @@ RectTransform:
   - {fileID: 5302814759720826869}
   - {fileID: 4684449972761827292}
   - {fileID: 5304974844268114056}
+  - {fileID: 8921834578632848113}
   m_Father: {fileID: 2250626330242628340}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -755,6 +763,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.52078223, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5428766754593324901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8921834578632848113}
+  - component: {fileID: 8776023622232554935}
+  - component: {fileID: 5908497873807356406}
+  m_Layer: 6
+  m_Name: Image_CardBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8921834578632848113
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428766754593324901}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3625172545431126182}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.539, y: 6.1226}
+  m_SizeDelta: {x: 33.514, y: 30.243}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8776023622232554935
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428766754593324901}
+  m_CullTransparentMesh: 1
+--- !u!114 &5908497873807356406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428766754593324901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

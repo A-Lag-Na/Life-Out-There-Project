@@ -34,6 +34,7 @@ public class ThisCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        thisCard = c_CardDatabase.cardList[thisId];
         id = thisCard.cardId;
         cost = thisCard.cardCost;
         cardName = thisCard.cardName;

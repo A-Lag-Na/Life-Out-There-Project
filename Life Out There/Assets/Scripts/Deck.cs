@@ -18,7 +18,7 @@ public class Deck : MonoBehaviour
     public TextMeshProUGUI deckCount;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < 4; i++)
         {

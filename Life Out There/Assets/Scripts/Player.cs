@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerBlock = 0;
     [SerializeField] private int playerGold = 99;
     public GameObject handArea;
+    public TextMeshProUGUI currentHealth;
+    public TextMeshProUGUI maxHealth;
     #endregion
     public Deck deck;
     private bool playerTurn = true;
@@ -21,6 +25,8 @@ public class Player : MonoBehaviour
     List<c_Card> playerDeck = new List<c_Card>();
     private GameObject selectedCard = null;
     //GameObject[] syringes;
+
+    public GameObject cardPrefab;
 
         
 
@@ -34,10 +40,13 @@ public class Player : MonoBehaviour
         //{
         //    Debug.Log("Card:"+);
         //}
+        currentHealth.SetText(playerHealth.ToString());
+        maxHealth.SetText(maxPlayerHealth.ToString());
 
-            for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
-            GameObject playerCard =  Instantiate(playerDeck[i].gameObject, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject playerCard =  Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].cardId;
             playerCard.transform.SetParent(handArea.transform, false);
             inHand.Add(playerCard);
         }

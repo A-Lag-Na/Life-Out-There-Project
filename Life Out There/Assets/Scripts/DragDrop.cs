@@ -62,7 +62,7 @@ public class DragDrop : MonoBehaviour
             }
 
         }
-        else
+        else 
         {
             isSelected = false;
             cardHighlight.SetActive(false);

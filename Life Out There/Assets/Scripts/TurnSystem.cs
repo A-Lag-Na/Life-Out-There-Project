@@ -17,12 +17,19 @@ public class TurnSystem : MonoBehaviour
     public TextMeshProUGUI currentMana;
     public TextMeshProUGUI maxMana;
 
+    private GameObject player;
+    private GameObject enemy;
+
     // Start is called before the first frame update
     void Start()
     {
         isPlayerTurn = true;
         playerTurnCount = 1;
         enemyTurnCount = 0;
+
+        player = GameObject.FindWithTag("Player");
+
+        enemy = GameObject.FindWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -36,7 +43,9 @@ public class TurnSystem : MonoBehaviour
     {
         isPlayerTurn = false;
         enemyTurnCount++;
+        player.GetComponent<Player>().RemovePlayerBlock();
     }
+
     public void EndEnemyTurn()
     {
         isPlayerTurn = true;

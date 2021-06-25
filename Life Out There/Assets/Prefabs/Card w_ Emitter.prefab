@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 888246430261667195}
   - component: {fileID: 2189136249165850304}
   - component: {fileID: 8162515100977291198}
-  m_Layer: 6
+  - component: {fileID: 418890809847086388}
+  m_Layer: 0
   m_Name: Card w_ Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +104,36 @@ MonoBehaviour:
   descText: {fileID: 4864188849762293521}
   thisSprite: {fileID: 0}
   thatImage: {fileID: 5591402480178412019}
+  cardHighlight: {fileID: 7078453684249464123}
+--- !u!114 &418890809847086388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93413513353197798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162515100977291198}
+          m_TargetAssemblyTypeName: ThisCard, Assembly-CSharp
+          m_MethodName: Selection
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &660425753059529454
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +145,7 @@ GameObject:
   - component: {fileID: 5304974844268114056}
   - component: {fileID: 6189955159320784475}
   - component: {fileID: 6859982872055208653}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_CardType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +221,7 @@ GameObject:
   - component: {fileID: 9001999222424050727}
   - component: {fileID: 8191653402907401930}
   - component: {fileID: 8296692026584560535}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TMP_Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +356,7 @@ GameObject:
   - component: {fileID: 2134249779516861660}
   - component: {fileID: 2134249779516861661}
   - component: {fileID: 2134249779516861602}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ArrowEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +450,7 @@ GameObject:
   - component: {fileID: 421097436583943488}
   - component: {fileID: 420473813018576836}
   - component: {fileID: 4864188849762293521}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TMP_CardDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +584,7 @@ GameObject:
   - component: {fileID: 3401366577303609297}
   - component: {fileID: 3665189049172982603}
   - component: {fileID: 6991831161187978563}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_BorderArt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3625172545431126182}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Card Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +701,7 @@ GameObject:
   - component: {fileID: 3667643156785642827}
   - component: {fileID: 660703811988152117}
   - component: {fileID: 5591402480178412019}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_CardArt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +776,7 @@ GameObject:
   - component: {fileID: 8921834578632848113}
   - component: {fileID: 8776023622232554935}
   - component: {fileID: 5908497873807356406}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_CardBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +851,7 @@ GameObject:
   - component: {fileID: 5302814759720826869}
   - component: {fileID: 4179334242804564799}
   - component: {fileID: 4113065899576256364}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_DescriptionBackground\
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +927,7 @@ GameObject:
   - component: {fileID: 4522070395703289753}
   - component: {fileID: 3193417882136804769}
   - component: {fileID: 5093506487840762569}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TMP_CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1061,7 @@ GameObject:
   - component: {fileID: 3146134555937559357}
   - component: {fileID: 8903567957812705769}
   - component: {fileID: 1131565120293715467}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_CardCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,7 +1137,7 @@ GameObject:
   - component: {fileID: 4684449972761827292}
   - component: {fileID: 8484268248514186123}
   - component: {fileID: 7968186524628083988}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_CardNameBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1213,7 @@ GameObject:
   - component: {fileID: 302761873485089064}
   - component: {fileID: 7853437833661069897}
   - component: {fileID: 3302041980464593972}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TMP_CardType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1347,7 @@ GameObject:
   - component: {fileID: 5817337554769082342}
   - component: {fileID: 380637630750771503}
   - component: {fileID: 1988304653598136287}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Image_CardHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

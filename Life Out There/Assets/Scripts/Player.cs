@@ -56,43 +56,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (playerTurn)
-    //    {
-    //        if (isSelected)
-    //        {
-    //            arrowEmitter.SetActive(true);
-    //        }
-    //        else
-    //        {
-    //            arrowEmitter.SetActive(false);
-    //        }
-    //    }
-    //}
-
-    public void Selection()
+    public void AddPlayerBlock(c_Card blockCard)
     {
-        Debug.Log("This is selected:" + this.name);
-
-        //if ()
-        //{
-        //    selectedCard = card;
-        //    card.transform.position = new Vector2(transform.position.x, transform.position.y + 50);
-        //    card.cardHighlight.SetActive(true);
-
-
-        //}
-        //else
-        //{
-        //    isSelected = false;
-        //    cardHighlight.SetActive(false);
-        //    transform.position = new Vector2(transform.position.x, transform.position.y - 50);
-        //}
-
-
+        playerBlock += 5;
     }
+
+
+    public void RemovePlayerBlock()
+    {
+        playerBlock = 0 ;
+    }
+
+    public void PlayerTakeDamage(int damageAmmount)
+    {
+        playerHealth -= damageAmmount;
+    }
+
 
     #region Gold
     public void AddCoins(int amountOfCoins)

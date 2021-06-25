@@ -97,22 +97,22 @@ public class ThisCard : MonoBehaviour
             isSelected = true;
             transform.position = new Vector2(transform.position.x, transform.position.y + 50);
             cardHighlight.SetActive(true);
-            // Debug.Log("This object is selected and its position is <" + transform.position + ">");
+            //Debug.Log("This object is selected and its position is <" + transform.position + ">");
 
-            if (thisCard.cardType == "Attack")
+            if (cardType == "Attack")
             {
 
                enemyLight = enemy.transform.GetChild(0).gameObject;
                enemyLight.SetActive(true);
                isenemyOn = true;
-                    // Debug.Log("This object is <" + this.name + "> and its highlight is <" + enemyLight.name + ">");
+              //Debug.Log("This object is <" + cardName + "> and its highlight is <" + enemyLight.name + ">");
             }
-            else if (thisCard.cardType == "Skill")
+            else if (cardType == "Skill")
             {
                 playerLight = player.transform.GetChild(0).gameObject;
                 playerLight.SetActive(true);
                 isplayerOn = true;
-                //Debug.Log("This object is <" + this.name + "> and its highlight is <" + playerLight.name + ">");
+                //Debug.Log("This object is <" + cardName + "> and its highlight is <" + playerLight.name + ">");
             }
 
         }

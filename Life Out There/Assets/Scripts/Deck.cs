@@ -28,10 +28,6 @@ public class Deck : MonoBehaviour
         {
             AddCard(c_CardDatabase.cardList[1]);
         }
-
-         UnityEngine.Debug.Log("Card:"+ c_CardDatabase.cardList[0]);
-        UnityEngine.Debug.Log("Card:" + c_CardDatabase.cardList[1]);
-
         Shuffle();
     }
 

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
 
     [SerializeField] private int enemyHealth = 12;
+    [SerializeField] private int enemyMaxHealth = 12;
     public GameObject turnSystem;
+    public GameObject healthSlider;
+
     bool isPlayerTurn;
     private GameObject player;
     // Start is called before the first frame update
@@ -14,11 +18,13 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
+        SetMaxHealth(enemyMaxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (enemyHealth > 0)
         {
             isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
@@ -39,6 +45,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            Destroy(healthSlider);
             Destroy(gameObject);
         }
     }
@@ -46,7 +53,18 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int attackDamage) 
     {
         enemyHealth -= attackDamage;
+        SetHealth(enemyHealth);
     }
 
-
+    public void SetHealth(int health)
+    {
+        healthSlider.GetComponent<Slider>().value = health;
+    }
+    public void SetMaxHealth(int maxHealth)
+    {
+        healthSlider.GetComponent<Slider>().maxValue = maxHealth;
+        healthSlider.GetComponent<Slider>().value = maxHealth;
+    }
 }
+
+

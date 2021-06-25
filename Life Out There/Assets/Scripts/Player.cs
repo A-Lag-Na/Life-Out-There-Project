@@ -14,9 +14,18 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int playerBlock = 0;
     [SerializeField] private int playerGold = 99;
+    [SerializeField] private int playerMana = 2;
+    [SerializeField] private int maxPlayerMana = 2;
+    private bool hasBlock = false;
+
+    public TextMeshProUGUI currentMana;
+    public TextMeshProUGUI maxMana;
     public GameObject handArea;
     public TextMeshProUGUI currentHealth;
     public TextMeshProUGUI maxHealth;
+    public TextMeshProUGUI blockAmmount;
+
+    public GameObject Block;
 
     #endregion
     public Deck deck;
@@ -45,8 +54,6 @@ public class Player : MonoBehaviour
         currentHealth.SetText(playerHealth.ToString());
         maxHealth.SetText(maxPlayerHealth.ToString());
 
-
-
         for (int i = 0; i < 5; i++)
         {
             GameObject playerCard =  Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -54,17 +61,43 @@ public class Player : MonoBehaviour
             playerCard.transform.SetParent(handArea.transform, false);
             inHand.Add(playerCard);
         }
+      
+    }
+
+    void Update()
+    {
+        currentHealth.SetText(playerHealth.ToString());
+        maxHealth.SetText(maxPlayerHealth.ToString());
+
+        currentMana.SetText(playerMana.ToString());
+        maxMana.SetText(maxPlayerMana.ToString());
     }
 
     public void AddPlayerBlock(c_Card blockCard)
     {
+        Block.SetActive(true);
+        hasBlock = true;
         playerBlock += 5;
+        blockAmmount.SetText(playerBlock.ToString());
     }
 
 
     public void RemovePlayerBlock()
     {
-        playerBlock = 0 ;
+        Block.SetActive(false);
+        playerBlock = 0;
+        blockAmmount.SetText(playerBlock.ToString());
+
+    }
+    public bool PlayerHasBlock()
+    {
+        return hasBlock;
+    }
+
+    public void BlockDamage(int damage)
+    {
+        playerBlock -= damage;
+        blockAmmount.SetText(playerBlock.ToString());
     }
 
     public void PlayerTakeDamage(int damageAmmount)
@@ -72,7 +105,44 @@ public class Player : MonoBehaviour
         playerHealth -= damageAmmount;
     }
 
+    public int GetManaCount()
+    {
+        return playerMana;
+    }
 
+    public void ResetManaCount()
+    {
+        playerMana = maxPlayerMana;
+    }
+    public void PlayedMana(int cost)
+    {
+        playerMana -= cost;
+    }
+
+    public void DiscardHand()
+    {
+        foreach (Transform child in handArea.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
+    public void NewHand()
+    {
+        deck.Shuffle();
+
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject playerCard = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].cardId;
+            playerCard.transform.SetParent(handArea.transform, false);
+            inHand.Add(playerCard);
+        }
+    }
+    public void RemoveFromHand()
+    {
+        
+    }
     #region Gold
     public void AddCoins(int amountOfCoins)
     {
@@ -88,6 +158,7 @@ public class Player : MonoBehaviour
     {
         playerGold = _coins;
     }
+
     #endregion
 
     

@@ -67,26 +67,32 @@ public class ThisCard : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && isSelected)
         {
-            if (thisCard.cardType == "Attack")
+            if (player.GetComponent<Player>().GetManaCount() >= cost)
             {
-                enemy.GetComponent<Enemy>().TakeDamage(6);
-                if (isenemyOn)
-                {
-                    enemyLight.SetActive(false);
-                    isenemyOn = false;
-                }
-                Destroy(gameObject);
 
-            }
-            else if (thisCard.cardType == "Skill")
-            {
-                player.GetComponent<Player>().AddPlayerBlock(thisCard);
-                if (isplayerOn)
+                if (thisCard.cardType == "Attack")
                 {
-                    playerLight.SetActive(false);
-                    isplayerOn = false;
+                    enemy.GetComponent<Enemy>().TakeDamage(6);
+                    if (isenemyOn)
+                    {
+                        enemyLight.SetActive(false);
+                        isenemyOn = false;
+                    }
+                    player.GetComponent<Player>().PlayedMana(cost);
+                    Destroy(gameObject);
+
                 }
-                Destroy(gameObject);
+                else if (thisCard.cardType == "Skill")
+                {
+                    player.GetComponent<Player>().AddPlayerBlock(thisCard);
+                    if (isplayerOn)
+                    {
+                        playerLight.SetActive(false);
+                        isplayerOn = false;
+                    }
+                    player.GetComponent<Player>().PlayedMana(cost);
+                    Destroy(gameObject);
+                }
             }
         }
     }

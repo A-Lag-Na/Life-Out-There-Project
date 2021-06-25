@@ -11,11 +11,6 @@ public class TurnSystem : MonoBehaviour
     public int enemyTurnCount;
 
 
-    [SerializeField] private int playerMana = 2;
-    [SerializeField] private int maxPlayerMana = 2;
-
-    public TextMeshProUGUI currentMana;
-    public TextMeshProUGUI maxMana;
 
     private GameObject player;
     private GameObject enemy;
@@ -33,24 +28,24 @@ public class TurnSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        currentMana.SetText(playerMana.ToString());
-        maxMana.SetText(maxPlayerMana.ToString());
-    }
+  
 
     public void EndPlayerTurn()
     {
         isPlayerTurn = false;
         enemyTurnCount++;
-        player.GetComponent<Player>().RemovePlayerBlock();
+        player.GetComponent<Player>().DiscardHand();
     }
 
     public void EndEnemyTurn()
     {
         isPlayerTurn = true;
         playerTurnCount++;
-
-        playerMana = maxPlayerMana;
+        if (player.GetComponent<Player>().blockAmmount.text != "0")
+        {
+            player.GetComponent<Player>().RemovePlayerBlock();
+        }
+        player.GetComponent<Player>().ResetManaCount();
+        player.GetComponent<Player>().NewHand();
     }
 }

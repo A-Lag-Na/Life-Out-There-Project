@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject map;
+    public GameObject menu;
     #region MainMenuProperties
     //private Button startBTN, loadBTN, tutorialBTN, creditsBTN, optionsBTN, exitBTN = null;
     private Button[] buttons;
@@ -33,8 +35,8 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("Normal Combat");
-     
+        menu.SetActive(false);
+        map.SetActive(true);
     }
 
     private void OptionsMenu()

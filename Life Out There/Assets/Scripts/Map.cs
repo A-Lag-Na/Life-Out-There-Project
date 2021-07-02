@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Exit : MonoBehaviour
+public class Map : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,9 @@ public class Exit : MonoBehaviour
     {
         
     }
-    public void EndGame()
+
+    public void PickNode() 
     {
-        SceneManager.LoadScene("TitleMenu");
+        SceneManager.LoadScene("Normal Combat");
     }
 }
-

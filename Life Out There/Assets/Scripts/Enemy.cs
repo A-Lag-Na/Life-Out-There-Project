@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int enemyMaxHealth = 12;
     public GameObject turnSystem;
     public GameObject healthSlider;
+    public TextMeshProUGUI health;
 
     bool isPlayerTurn;
     private GameObject player;
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health.SetText(enemyHealth.ToString() + " / " + enemyMaxHealth.ToString());
 
         if (enemyHealth > 0)
         {
@@ -47,6 +50,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(healthSlider);
             Destroy(gameObject);
+            turnSystem.GetComponent<TurnSystem>().isEnemyDead = true;
         }
     }
 

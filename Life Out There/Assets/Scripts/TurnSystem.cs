@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 using TMPro;
 
 public class TurnSystem : MonoBehaviour
@@ -9,7 +11,7 @@ public class TurnSystem : MonoBehaviour
     public bool isPlayerTurn;
     public int playerTurnCount;
     public int enemyTurnCount;
-
+    public bool isEnemyDead = false;
 
 
     private GameObject player;
@@ -28,7 +30,15 @@ public class TurnSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-  
+
+    void Update()
+    {
+        if (isEnemyDead)
+        {
+
+            SceneManager.LoadScene("Game End");
+        }
+    }
 
     public void EndPlayerTurn()
     {

@@ -15,12 +15,18 @@ public class Enemy : MonoBehaviour
 
     bool isPlayerTurn;
     private GameObject player;
+    bool isAttacking = false;
+    private float blockDamageTransDelay = 1;
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
         SetMaxHealth(enemyMaxHealth);
+        if (GetComponent<Animator>() != null)
+            anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,17 +39,9 @@ public class Enemy : MonoBehaviour
             isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
 
             if (!isPlayerTurn)
-            {
-                if (player.GetComponent<Player>().PlayerHasBlock() == false)
-                {
-                    player.GetComponent<Player>().PlayerTakeDamage(1);
-                    turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
-                }
-                else
-                {
-                    player.GetComponent<Player>().BlockDamage(1);
-                    turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
-                }
+            {    
+               if(!isAttacking)
+                 StartCoroutine("DealDamage");
             }
         }
         else
@@ -54,8 +52,62 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator DealDamage()
+    {
+        if (player.GetComponent<Player>().PlayerHasBlock() == true)
+        {
+            isAttacking = true;
+            if (anim != null)
+            {
+                for (int i = 0; i < anim.parameterCount; i++)
+                {
+                    if (anim.GetParameter(i).name == "Attack")
+                        anim.SetTrigger("Attack");
+                }
+            }
+            
+            //tell player theyre are taking damage to their block;
+            player.GetComponent<Player>().BlockDamage(1);
+            //Add in delay window between dealing damage to block before ending my turn
+            yield return new WaitForSeconds(blockDamageTransDelay);
+            //End your turn
+            turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
+            isAttacking = false;
+        }
+        else
+        {
+            isAttacking = true;
+
+            if (anim != null)
+            {
+                for (int i = 0; i < anim.parameterCount; i++)
+                {
+                    if (anim.GetParameter(i).name == "Attack")
+                        anim.SetTrigger("Attack");
+                }
+
+                player.GetComponent<Player>().PlayerTakeDamage(1);
+                yield return new WaitForSeconds(blockDamageTransDelay);
+
+                turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
+                isAttacking = false;
+            }
+        }
+    }
+
+
+
+
     public void TakeDamage(int attackDamage) 
     {
+        if (anim != null)
+        {
+            for (int i = 0; i < anim.parameterCount; i++)
+            {
+                if (anim.GetParameter(i).name == "Take Damage")
+                    anim.SetTrigger("Take Damage");
+            }
+        }
         enemyHealth -= attackDamage;
         SetHealth(enemyHealth);
     }

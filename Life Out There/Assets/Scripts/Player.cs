@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     List<c_Card> playerDeck = new List<c_Card>();
     private GameObject selectedCard = null;
     //GameObject[] syringes;
+    private Animator anim;
 
     public GameObject cardPrefab;
 
@@ -61,7 +62,9 @@ public class Player : MonoBehaviour
             playerCard.transform.SetParent(handArea.transform, false);
             inHand.Add(playerCard);
         }
-      
+
+        if (GetComponent<Animator>() != null)
+            anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -102,7 +105,27 @@ public class Player : MonoBehaviour
 
     public void PlayerTakeDamage(int damageAmmount)
     {
-        playerHealth -= damageAmmount;
+        if (anim != null)
+        {
+            for (int i = 0; i < anim.parameterCount; i++)
+            {
+                if (anim.GetParameter(i).name == "TakeDamage")
+                    anim.SetTrigger("TakeDamage");
+            }
+        }
+            playerHealth -= damageAmmount;
+        
+    }
+    public void PlayerDealDamage()
+    {
+        if (anim != null)
+        {
+            for (int i = 0; i < anim.parameterCount; i++)
+            {
+                if (anim.GetParameter(i).name == "AttackA")
+                    anim.SetTrigger("AttackA");
+            }
+        }
     }
 
     public int GetManaCount()

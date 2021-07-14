@@ -72,6 +72,7 @@ public class ThisCard : MonoBehaviour
 
                 if (thisCard.cardType == "Attack")
                 {
+                    player.GetComponent<Player>().PlayerDealDamage();
                     enemy.GetComponent<Enemy>().TakeDamage(6);
                     if (isenemyOn)
                     {

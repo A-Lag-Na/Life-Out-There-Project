@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     bool isPlayerTurn;
     private GameObject player;
     bool isAttacking = false;
+    bool isDead = false;
     private float blockDamageTransDelay = 1;
     private Animator anim;
 
@@ -46,10 +47,30 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Destroy(healthSlider);
-            Destroy(gameObject);
-            turnSystem.GetComponent<TurnSystem>().isEnemyDead = true;
+            
+            StartCoroutine("OnDeath");
         }
+    }
+
+    IEnumerator OnDeath()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+         
+            if (anim != null)
+            {
+                for (int i = 0; i < anim.parameterCount; i++)
+                {
+                    if (anim.GetParameter(i).name == "Death")
+                        anim.SetTrigger("Death");
+                }
+            }
+        }
+        yield return new WaitForSeconds(3);
+        Destroy(healthSlider);
+        Destroy(gameObject);
+        turnSystem.GetComponent<TurnSystem>().isEnemyDead = true;
     }
 
     IEnumerator DealDamage()

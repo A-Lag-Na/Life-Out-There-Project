@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Player : MonoBehaviour
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerMana = 2;
     [SerializeField] private int maxPlayerMana = 2;
     private bool hasBlock = false;
+    bool isDead = false;
 
     public TextMeshProUGUI currentMana;
     public TextMeshProUGUI maxMana;
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         //}
         currentHealth.SetText(playerHealth.ToString());
         maxHealth.SetText(maxPlayerHealth.ToString());
-
+        
         for (int i = 0; i < 5; i++)
         {
             GameObject playerCard =  Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -74,6 +76,29 @@ public class Player : MonoBehaviour
 
         currentMana.SetText(playerMana.ToString());
         maxMana.SetText(maxPlayerMana.ToString());
+
+        if (playerHealth <= 0)
+        {
+            StartCoroutine("OnDeath");
+        }
+    }
+
+    IEnumerator OnDeath()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+            if (anim != null)
+            {
+                for (int i = 0; i < anim.parameterCount; i++)
+                {
+                    if (anim.GetParameter(i).name == "Death")
+                        anim.SetTrigger("Death");
+                }
+            }
+        }
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Game End");
     }
 
     public void AddPlayerBlock(c_Card blockCard)

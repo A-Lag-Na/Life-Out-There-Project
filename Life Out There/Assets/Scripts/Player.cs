@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
     public void RemovePlayerBlock()
     {
         Block.SetActive(false);
+        hasBlock = false;
         playerBlock = 0;
         blockAmmount.SetText(playerBlock.ToString());
 
@@ -124,8 +125,18 @@ public class Player : MonoBehaviour
 
     public void BlockDamage(int damage)
     {
+        if (anim != null)
+        {
+            for (int i = 0; i < anim.parameterCount; i++)
+            {
+                if (anim.GetParameter(i).name == "TakeDamage")
+                    anim.SetTrigger("TakeDamage");
+            }
+        }
+
         playerBlock -= damage;
         blockAmmount.SetText(playerBlock.ToString());
+
     }
 
     public void PlayerTakeDamage(int damageAmmount)

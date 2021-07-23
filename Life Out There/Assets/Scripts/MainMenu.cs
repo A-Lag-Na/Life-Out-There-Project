@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject map;
-    public GameObject menu;
+    public GameObject map, menu, options, credits;
+
     #region MainMenuProperties
     //private Button startBTN, loadBTN, tutorialBTN, creditsBTN, optionsBTN, exitBTN = null;
     private Button[] buttons;
-    private GameObject credits, options = null;
+  
     GameObject music = null;
     #endregion
 
@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
         buttons[1].onClick.AddListener(OptionsMenu);
         buttons[2].onClick.AddListener(Credits);
         buttons[3].onClick.AddListener(ExitGame);
+        
     }
 
     // Update is called once per frame
@@ -41,11 +42,13 @@ public class MainMenu : MonoBehaviour
 
     private void OptionsMenu()
     {
+        menu.SetActive(false);
         options.SetActive(true);
     }
 
     private void Credits()
     {
+        menu.SetActive(false);
         credits.SetActive(true);
     }
 

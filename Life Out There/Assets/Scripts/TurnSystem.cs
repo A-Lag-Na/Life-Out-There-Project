@@ -17,6 +17,8 @@ public class TurnSystem : MonoBehaviour
 
     private GameObject player;
     private GameObject enemy;
+
+
     private bool fadeOut = true, fadeIn = true;
     private float fadeSpeed = 5f;
 
@@ -30,6 +32,8 @@ public class TurnSystem : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         enemy = GameObject.FindWithTag("Enemy");
+
+
 
         turntext.SetText("Player Turn");
         StartCoroutine(FadeINTurnBanner());

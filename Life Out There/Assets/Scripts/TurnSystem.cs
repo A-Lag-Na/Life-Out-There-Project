@@ -20,7 +20,8 @@ public class TurnSystem : MonoBehaviour
 
 
     private bool fadeOut = true, fadeIn = true;
-    private float fadeSpeed = 5f;
+    [SerializeField]
+    private float fadeSpeed = .5f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,8 @@ public class TurnSystem : MonoBehaviour
         enemy = GameObject.FindWithTag("Enemy");
 
 
-
         turntext.SetText("Player Turn");
         StartCoroutine(FadeINTurnBanner());
-        StartCoroutine(FadeOutTurnBanner());
     }
 
     // Update is called once per frame
@@ -58,7 +57,6 @@ public class TurnSystem : MonoBehaviour
 
         turntext.SetText("Enemy Turn");
         StartCoroutine(FadeINTurnBanner());
-        StartCoroutine(FadeOutTurnBanner());
     }
 
     public void EndEnemyTurn()
@@ -74,7 +72,6 @@ public class TurnSystem : MonoBehaviour
 
         turntext.SetText("Player Turn");
         StartCoroutine(FadeINTurnBanner());
-        StartCoroutine(FadeOutTurnBanner());
     }
 
     
@@ -83,7 +80,8 @@ public class TurnSystem : MonoBehaviour
 
         while (turnBanner.GetComponent<Image>().color.a > 0 && turntext.color.a > 0)
         {
-    
+            yield return new WaitForEndOfFrame();
+
             Color objectColor = turnBanner.GetComponent<Image>().color;
             Color textColor = turntext.color;
 
@@ -98,13 +96,15 @@ public class TurnSystem : MonoBehaviour
         }
         turnBanner.SetActive(false);
         yield return null;
-
     }
+
     public IEnumerator FadeINTurnBanner()
     {
         turnBanner.SetActive(true);
 
-        while (turnBanner.GetComponent<Image>().color.a > 1 && turntext.color.a > 1)
+        yield return new WaitForEndOfFrame();
+
+        while (turnBanner.GetComponent<Image>().color.a < 1 && turntext.color.a < 1)
         {
             Color objectColor = turnBanner.GetComponent<Image>().color;
             Color textColor = turntext.color;
@@ -119,6 +119,9 @@ public class TurnSystem : MonoBehaviour
             turntext.color = textColor;
 
         }
+      
+        StartCoroutine(FadeOutTurnBanner());
         yield return null;
+
     }
 }

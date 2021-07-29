@@ -3882,6 +3882,7 @@ MonoBehaviour:
   isEnemyDead: 0
   turnBanner: {fileID: 529970935}
   turntext: {fileID: 1805684576}
+  fadeSpeed: 0.5
 --- !u!4 &1500521045
 Transform:
   m_ObjectHideFlags: 0

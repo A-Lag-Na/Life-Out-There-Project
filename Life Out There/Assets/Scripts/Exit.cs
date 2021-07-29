@@ -16,8 +16,8 @@ public class Exit : MonoBehaviour
         backButton = GameObject.Find("Back Button").GetComponent<Button>();
         backButton.onClick.AddListener(BacktoGame);
 
-        backButton = GameObject.Find("Exit Button").GetComponent<Button>();
-        backButton.onClick.AddListener(EndGame);
+        exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
+        exitButton.onClick.AddListener(EndGame);
     }
 
     // Update is called once per frame

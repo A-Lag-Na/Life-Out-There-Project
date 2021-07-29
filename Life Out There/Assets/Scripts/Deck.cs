@@ -20,14 +20,7 @@ public class Deck : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            AddCard(c_CardDatabase.cardList[0]);
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            AddCard(c_CardDatabase.cardList[1]);
-        }
+       deck =  c_CardDatabase.CreateExplorerStartDeck(deck);
         Shuffle();
     }
 

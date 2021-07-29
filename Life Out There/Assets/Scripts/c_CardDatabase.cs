@@ -4,15 +4,78 @@ using UnityEngine;
 
 public class c_CardDatabase : MonoBehaviour
 {
-    public static List<c_Card> cardList = new List<c_Card>();
-   
+    public c_Card blankCard = null;
+    public static List<c_Card> cardDatabase = new List<c_Card>();
+
     void Awake()
     {
-        
-        // int CardId, int CardCost, string CardName, string CardType, string CardDesc
-        cardList.Add(new c_Card(0, 1, "Blast", "Attack", "Damage 6", Resources.Load<Sprite>("BlastArt")));
-        cardList.Add(new c_Card(1, 1, "Barrier", "Skill", "Block 5", Resources.Load<Sprite>("BarrierArt")));
-        cardList.Add(new c_Card(2, 0, "Solar Reflection", "Attack", "Damage 3. Apply 1 Weak", Resources.Load<Sprite>("BarrierArt")));
-        // UnityEngine.Debug.Log("I am running");
+        LoadCardData();
+    }
+
+    public void LoadCardData()
+    {
+        cardDatabase.Clear();
+
+        List<Dictionary<string, object>> data = CSVReader.Read("Card Database");
+        for (var i = 0; i < data.Count; i++)
+        {
+            int cardId = int.Parse(data[i]["ID"].ToString(), System.Globalization.NumberStyles.Integer);
+            int cardCost = int.Parse(data[i]["Cost"].ToString(), System.Globalization.NumberStyles.Integer);
+
+
+
+            string cardName = data[i]["Name"].ToString();
+            string cardType = data[i]["Type"].ToString();
+            string cardDescription = data[i]["Description"].ToString();
+
+            Sprite thisImage = Resources.Load<Sprite>(data[i]["Appearance"].ToString());
+
+            string cardCharacter = data[i]["Character"].ToString();
+            string cardRarity = data[i]["Rarity"].ToString();
+
+            bool exhaust;
+            if (data[i]["Exhaust"].ToString() == "TRUE")
+                exhaust = true;
+            else
+                exhaust = false;
+
+
+
+            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust);
+        }
+    }
+
+    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string cardRarity, bool exhaust)
+    {
+        c_Card tempCard = new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust);
+
+        cardDatabase.Add(tempCard);
+    }
+
+    public static List<c_Card> CreateExplorerStartDeck(List<c_Card> deck)
+    {
+        for (int i = 0; i < cardDatabase.Count; i++)
+        {
+            if (cardDatabase[i].cardName == "Barrier")
+            {
+                for (int l = 0; l < 5; l++)
+                {
+                    deck.Add(cardDatabase[i]);
+                }
+            }
+            else if(cardDatabase[i].cardName == "Blast")
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    deck.Add(cardDatabase[i]);
+                }
+            }
+            else if(cardDatabase[i].cardName == "Solar Reflection")
+            {
+                deck.Add(cardDatabase[i]);
+            }
+        }
+
+        return deck;
     }
 }

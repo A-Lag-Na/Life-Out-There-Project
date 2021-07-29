@@ -39,7 +39,7 @@ public class ThisCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thisCard = c_CardDatabase.cardList[thisId];
+        thisCard = c_CardDatabase.cardDatabase[thisId];
 
         player = GameObject.FindWithTag("Player");
 
@@ -49,7 +49,7 @@ public class ThisCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        thisCard = c_CardDatabase.cardList[thisId];
+        thisCard = c_CardDatabase.cardDatabase[thisId];
         id = thisCard.cardId;
         cost = thisCard.cardCost;
         cardName = thisCard.cardName;

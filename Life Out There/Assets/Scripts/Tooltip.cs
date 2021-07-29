@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class Tooltip : MonoBehaviour
+public class Tooltip : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     private static Tooltip instance;
 
@@ -49,5 +50,13 @@ public class Tooltip : MonoBehaviour
         instance.HideTooltip();
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
 }

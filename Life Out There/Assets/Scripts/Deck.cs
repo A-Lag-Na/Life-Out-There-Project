@@ -59,4 +59,5 @@ public class Deck : MonoBehaviour
             deck[randomIndex] = temp;
         }
     }
+    
 }

@@ -56,21 +56,21 @@ public class c_CardDatabase : MonoBehaviour
     {
         for (int i = 0; i < cardDatabase.Count; i++)
         {
-            if (cardDatabase[i].cardName == "Barrier")
+            if (cardDatabase[i].cardName == "Barrier" && !cardDatabase[i].cardName.Contains("+"))
             {
                 for (int l = 0; l < 5; l++)
                 {
                     deck.Add(cardDatabase[i]);
                 }
             }
-            else if(cardDatabase[i].cardName == "Blast")
+            else if(cardDatabase[i].cardName == "Blast" && !cardDatabase[i].cardName.Contains("+"))
             {
                 for (int j = 0; j < 4; j++)
                 {
                     deck.Add(cardDatabase[i]);
                 }
             }
-            else if(cardDatabase[i].cardName == "Solar Reflection")
+            else if(cardDatabase[i].cardName == "Solar Reflection" && !cardDatabase[i].cardName.Contains("+"))
             {
                 deck.Add(cardDatabase[i]);
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Tooltip : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+public class Tooltip : MonoBehaviour
 {
     private static Tooltip instance;
 
@@ -22,10 +22,10 @@ public class Tooltip : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 
     private void Update()
     {
-        transform.position = Input.mousePosition;
+        //transform.position = Input.mousePosition;
     }
 
-    private void ShowTooltip(string tooltipString)
+     public void ShowTooltip(string tooltipString)
     {
         gameObject.SetActive(true);
 
@@ -35,28 +35,26 @@ public class Tooltip : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         backgroundRectTransform.sizeDelta = textSize;
     }
 
-    private void HideTooltip()
+    public void HideTooltip()
     {
         gameObject.SetActive(false);
     }
 
-    public static void ShowTooltip_Static(string tooltipString)
-    {
-        instance.ShowTooltip(tooltipString);
-    }
 
-    public static void HideTooltip_Static()
-    {
-        instance.HideTooltip();
-    }
+//    public void OnPointerEnter(PointerEventData eventData)
+//    {
+//        string tooltipString = "This is a tooltip.";
+//        GameObject selectedObject = eventData.selectedObject.gameObject;
+//        if(selectedObject.GetComponent<TooltipDescription>())
+//        {
+//           tooltipString = selectedObject.GetComponent<TooltipDescription>().GetTooltipText();
+//           ShowTooltip(tooltipString);
+//        }
+//    }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
+//    public void OnPointerExit(PointerEventData eventData)
+//    {
+//        tooltipText.SetText("This is a tooltip.");
+//        HideTooltip();
+//    }
 }

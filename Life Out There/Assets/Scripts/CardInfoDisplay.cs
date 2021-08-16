@@ -7,7 +7,7 @@ using TMPro;
 
 public class CardInfoDisplay : MonoBehaviour
 {
-    public Card card;
+    public c_Card card;
 
     public GameObject cardName;
     public GameObject cardType;
@@ -37,7 +37,7 @@ public class CardInfoDisplay : MonoBehaviour
       
 
         Image art = artwork.GetComponent<Image>();
-        art.sprite = card.artwork;
+        art.sprite = card.thisImage;
     }
 
     // Update is called once per frame

@@ -21,8 +21,7 @@ public class c_CardDatabase : MonoBehaviour
         {
             int cardId = int.Parse(data[i]["ID"].ToString(), System.Globalization.NumberStyles.Integer);
             int cardCost = int.Parse(data[i]["Cost"].ToString(), System.Globalization.NumberStyles.Integer);
-
-
+            
 
             string cardName = data[i]["Name"].ToString();
             string cardType = data[i]["Type"].ToString();
@@ -39,15 +38,17 @@ public class c_CardDatabase : MonoBehaviour
             else
                 exhaust = false;
 
+            int damage = int.Parse(data[i]["Damage"].ToString(), System.Globalization.NumberStyles.Integer);
 
 
-            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust);
+
+            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage);
         }
     }
 
-    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string cardRarity, bool exhaust)
+    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string cardRarity, bool exhaust, int damage)
     {
-        c_Card tempCard = new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust);
+        c_Card tempCard = new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage);
 
         cardDatabase.Add(tempCard);
     }

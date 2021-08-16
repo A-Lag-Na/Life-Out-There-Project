@@ -8,6 +8,7 @@ public class c_Card : ScriptableObject
 {
     public int cardId;
     public int cardCost;
+    public int damage;
 
     public string cardName;
     public string cardType;
@@ -19,10 +20,11 @@ public class c_Card : ScriptableObject
 
     public Sprite thisImage;
 
-    public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust)
+    public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage)
     {
        cardId = CardId; 
        cardCost = CardCost;
+       damage = Damage;
        cardName = CardName;
        cardType = CardType;
        cardDescription = CardDescription;
@@ -38,7 +40,7 @@ public class c_Card : ScriptableObject
     {
         cardId = c.cardId;
         cardCost = c.cardCost;
-
+        damage = c.damage;
         cardName = c.cardName;
         cardType = c.cardType;
         cardDescription = c.cardDescription;

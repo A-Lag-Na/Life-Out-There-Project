@@ -1485,6 +1485,7 @@ GameObject:
   - component: {fileID: 579072311}
   - component: {fileID: 579072313}
   - component: {fileID: 579072312}
+  - component: {fileID: 579072314}
   m_Layer: 5
   m_Name: Oxygen
   m_TagString: Untagged
@@ -1552,6 +1553,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579072310}
   m_CullTransparentMesh: 1
+--- !u!114 &579072314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579072310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf33a1a5d3f1cb42912fe3c0eb18a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipString: This is your current Oxygen.
 --- !u!1 &619305554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
@@ -3927,6 +3941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4847f4d10a89cca4b8e190bc48bbdf52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blankCard: {fileID: 0}
 --- !u!4 &1511752573
 Transform:
   m_ObjectHideFlags: 0

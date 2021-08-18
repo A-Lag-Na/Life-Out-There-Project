@@ -802,11 +802,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 19bf411c79e522b4b8e54f82b0140314, type: 2}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: xSize
-      value: 16
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: yOffset
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: background
@@ -822,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: orientationOffset
-      value: -14
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887166, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: m_Layer

@@ -20,6 +20,7 @@ public class Deck : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        deck.Clear();
        deck =  c_CardDatabase.CreateExplorerStartDeck(deck);
         Shuffle();
     }

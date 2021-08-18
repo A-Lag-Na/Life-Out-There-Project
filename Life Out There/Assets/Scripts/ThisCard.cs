@@ -108,7 +108,6 @@ public class ThisCard : MonoBehaviour
 
             if (cardType == "Attack")
             {
-
                enemyLight = enemy.transform.GetChild(0).gameObject;
                enemyLight.SetActive(true);
                isenemyOn = true;

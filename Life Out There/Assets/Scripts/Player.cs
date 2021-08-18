@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         //syringes = new GameObject[3];
+        playerDeck.Clear();
+        inHand.Clear();
 
         playerDeck = deck.GetCards();
         //for (int i = 0; i < 5; i++)
@@ -105,7 +107,7 @@ public class Player : MonoBehaviour
     {
         Block.SetActive(true);
         hasBlock = true;
-        playerBlock += 5;
+        playerBlock += blockCard.block;
         blockAmmount.SetText(playerBlock.ToString());
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class c_CardDatabase : MonoBehaviour
 {
-    public c_Card blankCard = null;
     public static List<c_Card> cardDatabase = new List<c_Card>();
 
     void Awake()
@@ -38,17 +37,23 @@ public class c_CardDatabase : MonoBehaviour
             else
                 exhaust = false;
 
+            bool upgrade;
+            if (data[i]["Upgrade"].ToString() == "TRUE")
+                upgrade = true;
+            else
+                upgrade = false;
+
             int damage = int.Parse(data[i]["Damage"].ToString(), System.Globalization.NumberStyles.Integer);
+            int block = int.Parse(data[i]["Block"].ToString(), System.Globalization.NumberStyles.Integer);
 
 
-
-            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage);
+            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage, block, upgrade);
         }
     }
 
-    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string cardRarity, bool exhaust, int damage)
+    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string cardRarity, bool exhaust, int damage, int block, bool upgrade)
     {
-        c_Card tempCard = new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage);
+        c_Card tempCard = new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage, block, upgrade);
 
         cardDatabase.Add(tempCard);
     }
@@ -57,21 +62,21 @@ public class c_CardDatabase : MonoBehaviour
     {
         for (int i = 0; i < cardDatabase.Count; i++)
         {
-            if (cardDatabase[i].cardName == "Barrier" && !cardDatabase[i].cardName.Contains("+"))
+            if (cardDatabase[i].cardName == "Barrier" && !cardDatabase[i].upgrade)
             {
                 for (int l = 0; l < 5; l++)
                 {
                     deck.Add(cardDatabase[i]);
                 }
             }
-            else if(cardDatabase[i].cardName == "Blast" && !cardDatabase[i].cardName.Contains("+"))
+            else if(cardDatabase[i].cardName == "Blast" && !cardDatabase[i].upgrade)
             {
                 for (int j = 0; j < 4; j++)
                 {
                     deck.Add(cardDatabase[i]);
                 }
             }
-            else if(cardDatabase[i].cardName == "Solar Reflection" && !cardDatabase[i].cardName.Contains("+"))
+            else if(cardDatabase[i].cardName == "Solar Reflection" && !cardDatabase[i].upgrade)
             {
                 deck.Add(cardDatabase[i]);
             }

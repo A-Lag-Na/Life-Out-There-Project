@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Map
 {
@@ -69,6 +70,7 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
+                    SceneManager.LoadScene("Normal Combat");
                     break;
                 case NodeType.EliteEnemy:
                     break;

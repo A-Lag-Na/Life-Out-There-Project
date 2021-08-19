@@ -8,6 +8,7 @@ using TMPro;
 
 public class TurnSystem : MonoBehaviour
 {
+    #region Variables
     public bool isPlayerTurn;
     public int playerTurnCount;
     public int enemyTurnCount;
@@ -16,13 +17,14 @@ public class TurnSystem : MonoBehaviour
     public TextMeshProUGUI turntext;
 
     private GameObject player;
-    private GameObject enemy;
-
+    private GameObject spawnArea;
+    private SpawnEnemy spawnAreaScript;
+    private List<GameObject> enemies;
 
     private bool fadeOut = true, fadeIn = true;
     [SerializeField]
     private float fadeSpeed = .5f;
-
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +33,12 @@ public class TurnSystem : MonoBehaviour
         enemyTurnCount = 0;
 
         player = GameObject.FindWithTag("Player");
+      
+        spawnArea = GameObject.Find("SpawnArea");
+        if (spawnArea != null)
+            spawnAreaScript = spawnArea.GetComponentInParent<SpawnEnemy>();
 
-        enemy = GameObject.FindWithTag("Enemy");
+        enemies = spawnAreaScript.GetSpawnedEnemies();
 
 
         turntext.SetText("Player Turn");

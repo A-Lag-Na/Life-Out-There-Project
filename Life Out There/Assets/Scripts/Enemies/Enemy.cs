@@ -6,26 +6,54 @@ using TMPro;
 
 public class Enemy : MonoBehaviour
 {
+    #region Variable
+    #region Stats
+    //How much the enemy is worth to the spawner, and how much experience it grants on kill.
+    [SerializeField] private string enemyRank = "Common";
+    //How much damage it takes to kill the enemy 
+    [SerializeField] private int enemyHealth = 25;
+    //How much Health the enemy had at the beginning of combat
+    [SerializeField] private int enemyMaxHealth = 25;
+    //How much damage does the enemy deal
+    [SerializeField] private int enemyDamage = 6;
 
-    [SerializeField] private int enemyHealth = 12;
-    [SerializeField] private int enemyMaxHealth = 12;
-    public GameObject turnSystem;
-    public GameObject healthSlider;
-    public TextMeshProUGUI health;
+    //Condition Immunities 
+    bool isWeak;
 
+    //Enemy AI needs to know
     bool isPlayerTurn;
-    private GameObject player;
     bool isAttacking = false;
     bool isDead = false;
+    #endregion
+
+
+    #region Components
+    //is it the enemies turn
+    public GameObject turnSystem;
+    //Show the player how much health is left
+    public GameObject healthSlider;
+    //Show the player how much health is in a numerical way
+    public TextMeshProUGUI health;
+    //The Player
+    private GameObject player;
+    private Player playerScript;
+
     private float blockDamageTransDelay = 1;
     private Animator anim;
+    #endregion
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        if (player != null)
+            playerScript = player.GetComponentInParent<Player>();
+       
         isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
+       
         SetMaxHealth(enemyMaxHealth);
+        
         if (GetComponent<Animator>() != null)
             anim = GetComponent<Animator>();
     }
@@ -51,6 +79,18 @@ public class Enemy : MonoBehaviour
             StartCoroutine("OnDeath");
         }
     }
+    #region Getters and Setters
+    public void SetHealth(int health)
+    {
+        healthSlider.GetComponent<Slider>().value = health;
+    }
+    public void SetMaxHealth(int maxHealth)
+    {
+        healthSlider.GetComponent<Slider>().maxValue = maxHealth;
+        healthSlider.GetComponent<Slider>().value = maxHealth;
+    }
+    #endregion
+    #region EnemyFunctions
 
     IEnumerator OnDeath()
     {
@@ -133,15 +173,7 @@ public class Enemy : MonoBehaviour
         SetHealth(enemyHealth);
     }
 
-    public void SetHealth(int health)
-    {
-        healthSlider.GetComponent<Slider>().value = health;
-    }
-    public void SetMaxHealth(int maxHealth)
-    {
-        healthSlider.GetComponent<Slider>().maxValue = maxHealth;
-        healthSlider.GetComponent<Slider>().value = maxHealth;
-    }
+    #endregion
 }
 
 

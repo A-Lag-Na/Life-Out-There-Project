@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 995582684}
   - component: {fileID: 995582683}
   - component: {fileID: 995582682}
-  - component: {fileID: 995582685}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -366,18 +365,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &995582685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995582681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c99ced73df4a55543bba1b07bfc0028b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1657654272
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,9 +511,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 995582685}
+      - m_Target: {fileID: 2349056228768539879}
         m_TargetAssemblyTypeName: Exit, Assembly-CSharp
-        m_MethodName: EndGame
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -606,13 +593,26 @@ GameObject:
   - component: {fileID: 2349056228768539874}
   - component: {fileID: 2349056228768539875}
   - component: {fileID: 2349056228768539872}
+  - component: {fileID: 2349056228768539880}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Exit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2349056228768539880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349056228768539879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80a9a73b4767be4bbdd28d0cc6f88d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2349056229198114392
 GameObject:
   m_ObjectHideFlags: 0

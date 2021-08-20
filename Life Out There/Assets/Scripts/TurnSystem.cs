@@ -95,7 +95,7 @@ public class TurnSystem : MonoBehaviour
     public void EnemyHasDied()
     {
         enemiesDeadCount++;
-        if (enemiesEndedturn == enemies.Count)
+        if (enemiesDeadCount == enemies.Count)
         {
             enemiesDeadCount = 0;
             SceneManager.LoadScene("Game End");    

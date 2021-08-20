@@ -26,8 +26,7 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         tooltip.transform.position = eventData.position;
-        tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipString);
-        
+        tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipString);   
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -13,6 +13,7 @@ public class Tooltip : MonoBehaviour
     private TextMeshProUGUI tooltipText;
     private RectTransform backgroundRectTransform;
 
+
     private void Awake()
     {
         instance = this;
@@ -28,7 +29,6 @@ public class Tooltip : MonoBehaviour
      public void ShowTooltip(string tooltipString)
     {
         gameObject.SetActive(true);
-
         tooltipText.SetText(tooltipString);
         tooltipText.ForceMeshUpdate();
         Vector2 textSize = tooltipText.GetRenderedValues(false);

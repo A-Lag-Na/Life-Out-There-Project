@@ -70,7 +70,7 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
-                    SceneManager.LoadScene("Normal Combat");
+                    SceneManager.LoadScene("Minor Enemy");
                     break;
                 case NodeType.EliteEnemy:
                     break;

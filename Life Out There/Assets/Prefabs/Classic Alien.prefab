@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f8d4f818fc1544cad9916e5892c2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyRank: Common
   enemyHealth: 12
   enemyMaxHealth: 12
-  turnSystem: {fileID: 0}
-  healthSlider: {fileID: 0}
+  enemyDamage: 6
+  healthSlider: {fileID: 8516838840282284953, guid: 7afb54cdd9ddcf6448f87b223004d77f, type: 3}
   health: {fileID: 0}
 --- !u!95 &5277307177053520521
 Animator:

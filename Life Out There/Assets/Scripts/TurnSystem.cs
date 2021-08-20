@@ -12,7 +12,7 @@ public class TurnSystem : MonoBehaviour
     public bool isPlayerTurn;
     public int playerTurnCount;
     public int enemyTurnCount;
-    public bool isEnemyDead = false;
+    public bool areEnemiesDead = false;
     public GameObject turnBanner;
     public TextMeshProUGUI turntext;
 
@@ -20,6 +20,8 @@ public class TurnSystem : MonoBehaviour
     private GameObject spawnArea;
     private SpawnEnemy spawnAreaScript;
     private List<GameObject> enemies;
+    private int enemiesEndedturn = 0;
+    private int enemiesDeadCount = 0;
 
     private bool fadeOut = true, fadeIn = true;
     [SerializeField]
@@ -49,9 +51,9 @@ public class TurnSystem : MonoBehaviour
 
     void Update()
     {
-        if (isEnemyDead)
+        if (areEnemiesDead)
         {
-            SceneManager.LoadScene("Game End");
+            
         }
     }
 
@@ -65,7 +67,7 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(FadeINTurnBanner());
     }
 
-    public void EndEnemyTurn()
+    public void AllEnemiesPlayed()
     {
         isPlayerTurn = true;
         playerTurnCount++;
@@ -80,7 +82,25 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(FadeINTurnBanner());
     }
 
-    
+    public void EndEnemyTurn()
+    {
+        enemiesEndedturn++;
+        if (enemiesEndedturn == enemies.Count)
+        {
+            enemiesEndedturn = 0;
+            AllEnemiesPlayed();
+        }
+    }
+
+    public void EnemyHasDied()
+    {
+        enemiesDeadCount++;
+        if (enemiesEndedturn == enemies.Count)
+        {
+            enemiesDeadCount = 0;
+            SceneManager.LoadScene("Game End");    
+        }
+    }
    public IEnumerator FadeOutTurnBanner()
    {
 

@@ -58,7 +58,7 @@ namespace Map
 
         private void OnApplicationQuit()
         {
-            SaveMap();
+            PlayerPrefs.DeleteAll();
         }
     }
 }

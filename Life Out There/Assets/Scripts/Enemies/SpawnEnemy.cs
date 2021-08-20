@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -22,9 +23,7 @@ public class SpawnEnemy : MonoBehaviour
     #endregion
 
     #region Other
-    private List<Enemy> enemiesClone;
-    private int pointsClone;
-  
+
 
     //Tracks number of externally spawned enemies
     public int remainingChildren;
@@ -34,35 +33,10 @@ public class SpawnEnemy : MonoBehaviour
     #endregion
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        switch (roomType)
-        {
-            case "MinorEnemy":
-               
-                break;
-            case "EliteEnemy":
-               
-                break;
-            case "RestSite":
-             
-                break;
-            case "Treasure":
-               
-                break;
-            case "Store":
-              
-                break;
-            case "Boss":
-                
-                break;
-            case "Mystery":
-              
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        string sceneName = SceneManager.GetActiveScene().name;
+        SetRoomType(sceneName);
     }
 
     // Update is called once per frame
@@ -71,30 +45,31 @@ public class SpawnEnemy : MonoBehaviour
         
     }
     #region Getters and Setters 
-    public void SetRoomType(Map.NodeType nodeType)
+    public void SetRoomType(string roomType)
     {
-        switch (nodeType)
+
+        switch (roomType)
         {
-            case Map.NodeType.MinorEnemy:
-                roomType = "MinorEnemy";
+            case "Minor Enemy":
+                RunMinorEnemyRoom();
                 break;
-            case Map.NodeType.EliteEnemy:
-                roomType = "EliteEnemy";
+            case "Elite Enemy":
+
                 break;
-            case Map.NodeType.RestSite:
-                roomType = "RestSite";
+            case "RestSite":
+
                 break;
-            case Map.NodeType.Treasure:
-                roomType = "Treasure";
+            case "Treasure":
+
                 break;
-            case Map.NodeType.Store:
-                roomType = "Store";
+            case "Store":
+
                 break;
-            case Map.NodeType.Boss:
-                roomType = "Boss";
+            case "Boss":
+
                 break;
-            case Map.NodeType.Mystery:
-                roomType = "Mystery";
+            case "Mystery":
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -113,7 +88,8 @@ public class SpawnEnemy : MonoBehaviour
 
         for (int i = 0; i < enemyCount; i++)
         {
-            enemyClone = Instantiate(enemiesClone[enemyCount].gameObject, transform.position, Quaternion.identity);
+            enemyClone = Instantiate(enemies[0].gameObject, transform.position, Quaternion.identity);
+            enemyClone.transform.parent = gameObject.transform;
             //Adds the enemy to spawned enemies list
             spawnedEnemies.Add(enemyClone);
         }

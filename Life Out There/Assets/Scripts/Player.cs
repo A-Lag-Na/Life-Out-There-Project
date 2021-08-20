@@ -186,10 +186,12 @@ public class Player : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+        inHand.Clear();
     }
 
     public void NewHand()
     {
+   
         deck.Shuffle();
 
         for (int i = 0; i < 5; i++)

@@ -21,19 +21,20 @@ public class Enemy : MonoBehaviour
     bool isWeak;
 
     //Enemy AI needs to know
-    bool isPlayerTurn;
-    bool isAttacking = false;
-    bool isDead = false;
+    public bool isPlayerTurn;
+    public bool isAttacking = false;
+    public bool isDead = false;
     #endregion
 
 
     #region Components
     //is it the enemies turn
-    public GameObject turnSystem;
+    private GameObject turnSystem;
     //Show the player how much health is left
     public GameObject healthSlider;
     //Show the player how much health is in a numerical way
     public TextMeshProUGUI health;
+    
     //The Player
     private GameObject player;
     private Player playerScript;
@@ -49,9 +50,16 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         if (player != null)
             playerScript = player.GetComponentInParent<Player>();
-       
-        isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
-       
+      
+        turnSystem = GameObject.Find("TurnSystem");
+        if (turnSystem != null)
+            isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
+
+        healthSlider = Instantiate(healthSlider);
+        healthSlider.transform.parent = GameObject.Find("UI").transform;
+
+        health = healthSlider.GetComponentInChildren<TextMeshProUGUI>();
+
         SetMaxHealth(enemyMaxHealth);
         
         if (GetComponent<Animator>() != null)
@@ -110,14 +118,15 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(3);
         Destroy(healthSlider);
         Destroy(gameObject);
-        turnSystem.GetComponent<TurnSystem>().isEnemyDead = true;
+        turnSystem.GetComponent<TurnSystem>().EnemyHasDied();
     }
 
     IEnumerator DealDamage()
     {
+        isAttacking = true;
         if (player.GetComponent<Player>().PlayerHasBlock() == true)
         {
-            isAttacking = true;
+           
             if (anim != null)
             {
                 for (int i = 0; i < anim.parameterCount; i++)
@@ -133,12 +142,11 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(blockDamageTransDelay);
             //End your turn
             turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
-            isAttacking = false;
+          
         }
         else
         {
-            isAttacking = true;
-
+           
             if (anim != null)
             {
                 for (int i = 0; i < anim.parameterCount; i++)
@@ -151,9 +159,11 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(blockDamageTransDelay);
 
                 turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
-                isAttacking = false;
+                
             }
         }
+        isAttacking = false;
+
     }
 
 

@@ -14,6 +14,7 @@ public class TurnSystem : MonoBehaviour
     public int enemyTurnCount;
     public bool areEnemiesDead = false;
     public GameObject turnBanner;
+    public GameObject map;
     public TextMeshProUGUI turntext;
 
     private GameObject player;
@@ -98,7 +99,10 @@ public class TurnSystem : MonoBehaviour
         if (enemiesDeadCount == enemies.Count)
         {
             enemiesDeadCount = 0;
-            SceneManager.LoadScene("Game End");    
+            ///SceneManager.LoadScene("Game End"); 
+            GameObject UI = GameObject.Find("UI");
+            UI.SetActive(false);
+            map.SetActive(true);
         }
     }
    public IEnumerator FadeOutTurnBanner()

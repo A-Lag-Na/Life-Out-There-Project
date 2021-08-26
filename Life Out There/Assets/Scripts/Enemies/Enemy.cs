@@ -55,8 +55,7 @@ public class Enemy : MonoBehaviour
         if (turnSystem != null)
             isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
 
-        healthSlider = Instantiate(healthSlider);
-        healthSlider.transform.parent = GameObject.Find("UI").transform;
+        healthSlider = GameObject.Find("EnemyBar");
 
         health = healthSlider.GetComponentInChildren<TextMeshProUGUI>();
 

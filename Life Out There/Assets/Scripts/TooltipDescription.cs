@@ -9,6 +9,11 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
     string tooltipString;
     private GameObject tooltip;
 
+    //Doing this by game object validation didnt work
+    //Attempt 1 is creating a Tag and checking agaisnt that 
+    //Attempt 2 create new layer and checking against that
+    //string variable for to verify check
+    //
     public void Start()
     {
         tooltip = GameObject.Find("Tooltip");
@@ -23,16 +28,36 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
         return tooltipString;
     }
 
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltip.transform.position = eventData.position;
-        tooltip.GetComponent<Tooltip>().ShowTooltip(tooltipString);   
+        
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerEnter");
+        if (eventData.pointerCurrentRaycast.gameObject == gameObject)
+        {
+            tooltip.transform.position = eventData.position;
+            Tooltip temp = tooltip.GetComponent<Tooltip>();
+            if (temp != null)
+            {
+                temp.ShowTooltip(tooltipString);
+            }
+        }
+       
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerExit");
         // tooltipText.SetText("This is a tooltip.");
-        tooltip.GetComponent<Tooltip>().HideTooltip();
+        if (eventData.pointerCurrentRaycast.gameObject == gameObject)
+        {
+            Tooltip temp = tooltip.GetComponent<Tooltip>();
+            if (temp != null)
+            {
+                temp.HideTooltip();
+            }
+        }
     }
 }
 

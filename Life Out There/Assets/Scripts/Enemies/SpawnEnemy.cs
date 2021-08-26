@@ -88,8 +88,8 @@ public class SpawnEnemy : MonoBehaviour
 
         for (int i = 0; i < enemyCount; i++)
         {
-            enemyClone = Instantiate(enemies[0].gameObject, transform.position, Quaternion.identity);
-            enemyClone.transform.parent = gameObject.transform;
+            enemyClone = Instantiate(enemies[0].gameObject, new Vector3(0, 0, 0), Quaternion.identity);
+            enemyClone.transform.SetParent(gameObject.transform, false);
             //Adds the enemy to spawned enemies list
             spawnedEnemies.Add(enemyClone);
         }

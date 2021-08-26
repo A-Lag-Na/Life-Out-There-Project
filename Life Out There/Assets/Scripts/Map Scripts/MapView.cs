@@ -108,25 +108,29 @@ namespace Map
             backgroundObject.transform.SetParent(mapParent.transform);
             var bossNode = MapNodes.FirstOrDefault(node => node.Node.nodeType == NodeType.Boss);
             var span = m.DistanceBetweenFirstAndLastLayers();
-            backgroundObject.transform.localPosition = new Vector3(bossNode.transform.localPosition.x, span / 2f, 0f);
+            backgroundObject.transform.localPosition = new Vector3(bossNode.transform.localPosition.x, (span / 2f) * 15, 0f);
             backgroundObject.transform.localRotation = Quaternion.identity;
             var sr = backgroundObject.AddComponent<SpriteRenderer>();
             sr.color = backgroundColor;
             sr.drawMode = SpriteDrawMode.Sliced;
             sr.sprite = background;
             sr.size = new Vector2(xSize, span + yOffset * 2f);
+
         }
 
         private void CreateMapParent()
         {
             firstParent = new GameObject("OuterMapParent");
+            var mapCanvas = firstParent.AddComponent<Canvas>();
+            mapCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
             mapParent = new GameObject("MapParentWithAScroll");
             mapParent.transform.SetParent(firstParent.transform);
             var scrollNonUi = mapParent.AddComponent<ScrollNonUI>();
             scrollNonUi.freezeX = orientation == MapOrientation.BottomToTop || orientation == MapOrientation.TopToBottom;
             scrollNonUi.freezeY = orientation == MapOrientation.LeftToRight || orientation == MapOrientation.RightToLeft;
             var boxCollider = mapParent.AddComponent<BoxCollider>();
-            boxCollider.size = new Vector3(100, 100, 1);
+            boxCollider.size = new Vector3(500, 700, 1);
+            boxCollider.center = new Vector3(0, 250, 0);
         }
 
         private void CreateNodes(IEnumerable<Node> nodes)
@@ -144,7 +148,8 @@ namespace Map
             var mapNode = mapNodeObject.GetComponent<MapNode>();
             var blueprint = GetBlueprint(node.blueprintName);
             mapNode.SetUp(node, blueprint);
-            mapNode.transform.localPosition = node.position;
+            mapNode.transform.localPosition = node.position * 15;
+            mapNodeObject.transform.localScale = new Vector3(25, 25, 1);
             return mapNode;
         }
 
@@ -313,6 +318,7 @@ namespace Map
             var dottedLine = lineObject.GetComponent<DottedLineRenderer>();
             if (dottedLine != null) dottedLine.ScaleMaterial();
 
+            
             lineConnections.Add(new LineConnection(lineRenderer, from, to));
         }
 

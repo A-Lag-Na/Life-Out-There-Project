@@ -23,7 +23,7 @@ public class Tooltip : MonoBehaviour
 
     private void Update()
     {
-        //transform.position = Input.mousePosition;
+       
     }
 
      public void ShowTooltip(string tooltipString)
@@ -41,20 +41,5 @@ public class Tooltip : MonoBehaviour
     }
 
 
-//    public void OnPointerEnter(PointerEventData eventData)
-//    {
-//        string tooltipString = "This is a tooltip.";
-//        GameObject selectedObject = eventData.selectedObject.gameObject;
-//        if(selectedObject.GetComponent<TooltipDescription>())
-//        {
-//           tooltipString = selectedObject.GetComponent<TooltipDescription>().GetTooltipText();
-//           ShowTooltip(tooltipString);
-//        }
-//    }
 
-//    public void OnPointerExit(PointerEventData eventData)
-//    {
-//        tooltipText.SetText("This is a tooltip.");
-//        HideTooltip();
-//    }
 }

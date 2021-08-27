@@ -154,7 +154,7 @@ RectTransform:
   - {fileID: 1309053571}
   - {fileID: 1639124644}
   m_Father: {fileID: 1703481843}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -504,7 +504,8 @@ GameObject:
   - component: {fileID: 177018535}
   - component: {fileID: 177018537}
   - component: {fileID: 177018536}
-  m_Layer: 5
+  - component: {fileID: 177018538}
+  m_Layer: 7
   m_Name: UAO Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,8 +528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.025625004, y: 0.874}
   m_AnchorMax: {x: 0.6481252, y: 0.9335793}
-  m_AnchoredPosition: {x: -2, y: -0.5}
-  m_SizeDelta: {x: 4, y: -3}
+  m_AnchoredPosition: {x: -2, y: -12.1517}
+  m_SizeDelta: {x: 4, y: 20.3035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177018536
 MonoBehaviour:
@@ -562,6 +563,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177018534}
   m_CullTransparentMesh: 1
+--- !u!114 &177018538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177018534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf33a1a5d3f1cb42912fe3c0eb18a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipString: This is where your artifacts will be.
 --- !u!1 &242961034
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +679,7 @@ GameObject:
   - component: {fileID: 310782012}
   - component: {fileID: 310782014}
   - component: {fileID: 310782013}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Max Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +834,7 @@ RectTransform:
   m_Children:
   - {fileID: 1250658752}
   m_Father: {fileID: 1703481843}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -932,7 +946,7 @@ GameObject:
   - component: {fileID: 499989771}
   - component: {fileID: 499989773}
   - component: {fileID: 499989772}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: DeckCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,13 +964,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1703481843}
-  m_RootOrder: 5
+  m_Father: {fileID: 1880820620}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -560.6, y: -292.6}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 51.3917, y: 49.3522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499989772
 MonoBehaviour:
@@ -972,7 +986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1012,7 +1026,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1041,7 +1055,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.6612797, y: 49.017624, z: 87.07481, w: 48.451424}
+  m_margin: {x: 50.849693, y: 49.017624, z: 48.243168, w: 48.451424}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1296,11 +1310,11 @@ RectTransform:
   m_Children:
   - {fileID: 1804507030}
   m_Father: {fileID: 1703481843}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -635.68176, y: -163.18497}
+  m_AnchoredPosition: {x: -694, y: -164}
   m_SizeDelta: {x: 89.6237, y: 93.3892}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579072312
@@ -1371,6 +1385,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880820620}
     m_Modifications:
+    - target: {fileID: 409947795634918963, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836244640112163646, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6590928995733948953, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1458,6 +1480,10 @@ PrefabInstance:
     - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Name
       value: Card Back (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
@@ -1584,7 +1610,8 @@ GameObject:
   - component: {fileID: 736106522}
   - component: {fileID: 736106524}
   - component: {fileID: 736106523}
-  m_Layer: 5
+  - component: {fileID: 736106525}
+  m_Layer: 7
   m_Name: HealthHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,6 +1678,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736106521}
   m_CullTransparentMesh: 1
+--- !u!114 &736106525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736106521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf33a1a5d3f1cb42912fe3c0eb18a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipString: This is your current health.
 --- !u!1 &968724885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,7 +2045,7 @@ GameObject:
   - component: {fileID: 1131813713}
   - component: {fileID: 1131813715}
   - component: {fileID: 1131813714}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2346,6 +2386,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880820620}
     m_Modifications:
+    - target: {fileID: 409947795634918963, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836244640112163646, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6590928995733948953, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2434,6 +2482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Back (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
 --- !u!1 &1322786913
@@ -2447,7 +2499,7 @@ GameObject:
   - component: {fileID: 1322786914}
   - component: {fileID: 1322786915}
   - component: {fileID: 1322786916}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Player Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,8 +2522,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 148}
-  m_SizeDelta: {x: 750, y: 300}
+  m_AnchoredPosition: {x: 0, y: 175}
+  m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1322786915
 CanvasRenderer:
@@ -2612,6 +2664,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880820620}
     m_Modifications:
+    - target: {fileID: 409947795634918963, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836244640112163646, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6590928995733948953, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2699,6 +2759,10 @@ PrefabInstance:
     - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Name
       value: Card Back (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
@@ -3606,7 +3670,6 @@ RectTransform:
   - {fileID: 1322786914}
   - {fileID: 500730551}
   - {fileID: 1880820620}
-  - {fileID: 499989771}
   - {fileID: 579072311}
   - {fileID: 31723322}
   - {fileID: 360360088}
@@ -4047,7 +4110,8 @@ GameObject:
   - component: {fileID: 1880820622}
   - component: {fileID: 1880820621}
   - component: {fileID: 1880820623}
-  m_Layer: 5
+  - component: {fileID: 1880820624}
+  m_Layer: 7
   m_Name: Deck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4069,13 +4133,14 @@ RectTransform:
   - {fileID: 109712428}
   - {fileID: 619305555}
   - {fileID: 261194473}
+  - {fileID: 499989771}
   m_Father: {fileID: 1703481843}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -548.14014, y: -309.19}
-  m_SizeDelta: {x: -1468.9374, y: -618.3728}
+  m_AnchoredPosition: {x: -546.7965, y: -309.19}
+  m_SizeDelta: {x: -1466.2501, y: -618.3728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880820621
 MonoBehaviour:
@@ -4128,6 +4193,19 @@ MonoBehaviour:
   cardInDeck2: {fileID: 619305554}
   cardInDeck3: {fileID: 261194472}
   deckCount: {fileID: 499989772}
+--- !u!114 &1880820624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880820619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf33a1a5d3f1cb42912fe3c0eb18a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipString: This says how many cards you have left.
 --- !u!1 &1895410264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,7 +4302,7 @@ GameObject:
   - component: {fileID: 2024117184}
   - component: {fileID: 2024117186}
   - component: {fileID: 2024117185}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Current Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4952,6 +5030,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880820620}
     m_Modifications:
+    - target: {fileID: 409947795634918963, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836244640112163646, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6590928995733948953, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5039,6 +5125,10 @@ PrefabInstance:
     - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
       propertyPath: m_Name
       value: Card Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866209601464453359, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda04650f4b61d7478f05f2719714b1c, type: 3}

@@ -9,6 +9,7 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
     string tooltipString;
     private GameObject tooltip;
 
+
     //Doing this by game object validation didnt work
     //Attempt 1 is creating a Tag and checking agaisnt that 
     //Attempt 2 create new layer and checking against that
@@ -31,33 +32,30 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerEnter");
-        if (eventData.pointerCurrentRaycast.gameObject == gameObject)
-        {
-            tooltip.transform.position = eventData.position;
-            Tooltip temp = tooltip.GetComponent<Tooltip>();
-            if (temp != null)
+            Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerEnter");
+            if (eventData.pointerCurrentRaycast.gameObject.layer == 7)
             {
-                temp.ShowTooltip(tooltipString);
+                tooltip.transform.position = eventData.position;
+                Tooltip temp = tooltip.GetComponent<Tooltip>();
+                if (temp != null)
+                {
+                    temp.ShowTooltip(tooltipString);
+                }
             }
-        }
-       
-        
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerExit");
-        // tooltipText.SetText("This is a tooltip.");
-        if (eventData.pointerCurrentRaycast.gameObject == gameObject)
-        {
+         Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerExit");
+         // tooltipText.SetText("This is a tooltip.");
+         if (eventData.pointerCurrentRaycast.gameObject.layer != 7)
+         {
             Tooltip temp = tooltip.GetComponent<Tooltip>();
             if (temp != null)
             {
-                temp.HideTooltip();
+                    temp.HideTooltip();
             }
-        }
+         }
     }
 }
 

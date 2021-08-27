@@ -55,8 +55,6 @@ public class Enemy : MonoBehaviour
         if (turnSystem != null)
             isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
 
-        healthSlider = GameObject.Find("EnemyBar");
-
         health = healthSlider.GetComponentInChildren<TextMeshProUGUI>();
 
         SetMaxHealth(enemyMaxHealth);

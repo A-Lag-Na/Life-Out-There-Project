@@ -20,8 +20,7 @@ public class Player : MonoBehaviour
     private bool hasBlock = false;
     bool isDead = false;
 
-    public TextMeshProUGUI currentMana;
-    public TextMeshProUGUI maxMana;
+    public TextMeshProUGUI manaText;
     public GameObject handArea;
     public TextMeshProUGUI currentHealth;
     public TextMeshProUGUI maxHealth;
@@ -76,9 +75,7 @@ public class Player : MonoBehaviour
         currentHealth.SetText(playerHealth.ToString());
         maxHealth.SetText(maxPlayerHealth.ToString());
 
-        currentMana.SetText(playerMana.ToString());
-        maxMana.SetText(maxPlayerMana.ToString());
-
+        manaText.SetText(playerMana.ToString() + " / " + maxPlayerMana.ToString());
         if (playerHealth <= 0)
         {
             StartCoroutine("OnDeath");

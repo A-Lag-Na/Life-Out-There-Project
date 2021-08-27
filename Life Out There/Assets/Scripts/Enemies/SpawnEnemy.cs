@@ -10,12 +10,6 @@ public class SpawnEnemy : MonoBehaviour
     #region SpawnerStats
     #region SerializedFields
 
-    //Whether the spawner can spawn or not.
-    [SerializeField] private bool spawnEnabled = true;
-    [SerializeField] GameObject spawnpoint;
-    [SerializeField] string roomType;
-    [SerializeField] private bool isAreaCleared = false;
-    public bool clearCheck = false;
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
@@ -23,10 +17,6 @@ public class SpawnEnemy : MonoBehaviour
     #endregion
 
     #region Other
-
-
-    //Tracks number of externally spawned enemies
-    public int remainingChildren;
 
     //List of enemies spawned by the spawner.
     public List<GameObject> spawnedEnemies;
@@ -83,7 +73,8 @@ public class SpawnEnemy : MonoBehaviour
     #region Room Functions
     public void RunMinorEnemyRoom()
     {
-        int enemyCount = UnityEngine.Random.Range(1, 3);
+         int enemyCount = UnityEngine.Random.Range(1, 4);
+        //int enemyCount = 3;
         GameObject enemyClone = null;
 
         for (int i = 0; i < enemyCount; i++)

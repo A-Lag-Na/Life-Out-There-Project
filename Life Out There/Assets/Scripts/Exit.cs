@@ -16,8 +16,8 @@ public class Exit : MonoBehaviour
         backButton = GameObject.Find("Back Button").GetComponent<Button>();
         backButton.onClick.AddListener(BacktoGame);
 
-        exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
-        exitButton.onClick.AddListener(EndGame);
+       // exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
+       // exitButton.onClick.AddListener(EndGame);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Exit : MonoBehaviour
         
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         SceneManager.LoadScene("TitleMenu");
     }

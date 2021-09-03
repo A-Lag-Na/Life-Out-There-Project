@@ -108,7 +108,7 @@ namespace Map
             backgroundObject.transform.SetParent(mapParent.transform);
             var bossNode = MapNodes.FirstOrDefault(node => node.Node.nodeType == NodeType.Boss);
             var span = m.DistanceBetweenFirstAndLastLayers();
-            backgroundObject.transform.localPosition = new Vector3(bossNode.transform.localPosition.x, (span / 2f) * 15, 0f);
+            backgroundObject.transform.localPosition = new Vector3(bossNode.transform.localPosition.x, span / 2f * 30, 0f);
             backgroundObject.transform.localRotation = Quaternion.identity;
             var sr = backgroundObject.AddComponent<SpriteRenderer>();
             sr.color = backgroundColor;
@@ -129,8 +129,8 @@ namespace Map
             scrollNonUi.freezeX = orientation == MapOrientation.BottomToTop || orientation == MapOrientation.TopToBottom;
             scrollNonUi.freezeY = orientation == MapOrientation.LeftToRight || orientation == MapOrientation.RightToLeft;
             var boxCollider = mapParent.AddComponent<BoxCollider>();
-            boxCollider.size = new Vector3(500, 700, 1);
-            boxCollider.center = new Vector3(0, 250, 0);
+            boxCollider.size = new Vector3(758, 1380, 1);
+            boxCollider.center = new Vector3(-50, 442, 0);
         }
 
         private void CreateNodes(IEnumerable<Node> nodes)
@@ -148,8 +148,8 @@ namespace Map
             var mapNode = mapNodeObject.GetComponent<MapNode>();
             var blueprint = GetBlueprint(node.blueprintName);
             mapNode.SetUp(node, blueprint);
-            mapNode.transform.localPosition = node.position * 15;
-            mapNodeObject.transform.localScale = new Vector3(25, 25, 1);
+            mapNode.transform.localPosition = node.position * 32;
+            mapNodeObject.transform.localScale = new Vector3(60, 60, 1);
             return mapNode;
         }
 

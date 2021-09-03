@@ -44,7 +44,7 @@ public class SpawnEnemy : MonoBehaviour
                 RunMinorEnemyRoom();
                 break;
             case "Elite Enemy":
-
+                RunEliteEnemyRoom();
                 break;
             case "RestSite":
 
@@ -85,6 +85,19 @@ public class SpawnEnemy : MonoBehaviour
             spawnedEnemies.Add(enemyClone);
         }
 
+    }
+     public void RunEliteEnemyRoom()
+    {
+        int enemyCount = 3;
+        GameObject enemyClone = null;
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            enemyClone = Instantiate(enemies[i].gameObject, new Vector3(0, 0, 0), Quaternion.identity);
+            enemyClone.transform.SetParent(gameObject.transform, false);
+            //Adds the enemy to spawned enemies list
+            spawnedEnemies.Add(enemyClone);
+        }
     }
     #endregion
 }

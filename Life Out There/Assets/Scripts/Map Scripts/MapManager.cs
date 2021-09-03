@@ -11,6 +11,7 @@ namespace Map
 
         public Map CurrentMap { get; private set; }
 
+        //MUst move on and not die brethren
         private void Start()
         {
             if (PlayerPrefs.HasKey("Map"))
@@ -34,6 +35,8 @@ namespace Map
             {
                 GenerateNewMap();
             }
+
+          //  DontDestroyOnLoad(this.gameObject);
         }
 
         public void GenerateNewMap()
@@ -60,5 +63,10 @@ namespace Map
         {
             PlayerPrefs.DeleteAll();
         }
+
+        //private void OnDestroy()
+        //{
+        //    PlayerPrefs.DeleteAll();
+        //}
     }
 }

@@ -33,6 +33,7 @@ public class ThisCard : MonoBehaviour
     private GameObject enemyLight;
     private GameObject playerLight;
 
+    private GameObject arrowEmitter;
     private GameObject player;
     private GameObject enemy;
 
@@ -44,6 +45,8 @@ public class ThisCard : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         enemy = GameObject.FindWithTag("Enemy");
+
+        arrowEmitter = this.transform.Find("ArrowEmitter").gameObject;
     }
 
     // Update is called once per frame
@@ -67,9 +70,9 @@ public class ThisCard : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && isSelected)
         {
+          
             if (player.GetComponent<Player>().GetManaCount() >= cost)
             {
-
                 if (thisCard.cardType == "Attack")
                 {
                     player.GetComponent<Player>().PlayerDealDamage();
@@ -101,6 +104,8 @@ public class ThisCard : MonoBehaviour
     {
         if (isSelected == false)
         {
+            arrowEmitter.SetActive(true);
+
             isSelected = true;
             transform.position = new Vector2(transform.position.x, transform.position.y + 50);
             cardHighlight.SetActive(true);

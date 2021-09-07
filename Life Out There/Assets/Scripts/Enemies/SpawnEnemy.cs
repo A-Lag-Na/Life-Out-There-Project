@@ -56,7 +56,7 @@ public class SpawnEnemy : MonoBehaviour
 
                 break;
             case "Boss":
-
+                RunBossRoom();
                 break;
             case "Mystery":
 
@@ -98,6 +98,15 @@ public class SpawnEnemy : MonoBehaviour
             //Adds the enemy to spawned enemies list
             spawnedEnemies.Add(enemyClone);
         }
+    }
+
+    public void RunBossRoom()
+    {
+        GameObject enemyClone = null;
+        enemyClone = Instantiate(enemies[0].gameObject, new Vector3(0, 0, 0), Quaternion.identity);
+        enemyClone.transform.SetParent(gameObject.transform, false);
+        //Adds the enemy to spawned enemies list
+        spawnedEnemies.Add(enemyClone);
     }
     #endregion
 }

@@ -696,7 +696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.50000095, y: 0.50000095}
+  m_AnchoredPosition: {x: -0.5, y: 0.5}
   m_SizeDelta: {x: -1.0000019, y: -1.0000019}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7532210209147465756
@@ -763,8 +763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRank: Elite
-  enemyHealth: 80
-  enemyMaxHealth: 80
+  enemyHealth: 15
+  enemyMaxHealth: 15
   enemyDamage: 15
   isPlayerTurn: 0
   isAttacking: 0

@@ -65,11 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 19bf411c79e522b4b8e54f82b0140314, type: 2}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: xSize
-      value: 250
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: yOffset
-      value: 250
+      value: 525
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: background
@@ -80,8 +80,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5857439060437771865, guid: f353f6e27b7f79f458cbf2e8e46553f1, type: 3}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
+      propertyPath: mapManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
+      propertyPath: offsetFromNodes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27, type: 3}
       propertyPath: orientationOffset

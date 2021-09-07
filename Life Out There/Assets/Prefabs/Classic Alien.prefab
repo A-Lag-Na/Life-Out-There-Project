@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRank: Common
-  enemyHealth: 12
-  enemyMaxHealth: 12
+  enemyHealth: 8
+  enemyMaxHealth: 8
   enemyDamage: 6
   isPlayerTurn: 0
   isAttacking: 0

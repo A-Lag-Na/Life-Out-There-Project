@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRank: Elite
-  enemyHealth: 50
-  enemyMaxHealth: 50
+  enemyHealth: 10
+  enemyMaxHealth: 10
   enemyDamage: 10
   isPlayerTurn: 0
   isAttacking: 0

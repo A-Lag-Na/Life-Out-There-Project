@@ -1436,6 +1436,7 @@ MonoBehaviour:
   menu: {fileID: 263029215}
   options: {fileID: 1825425706}
   credits: {fileID: 1053787674}
+  playerHealth: 50
 --- !u!1 &1391740908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,6 +2257,18 @@ PrefabInstance:
       propertyPath: orientationOffset
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6870664590784096465, guid: 6c25f5841cde5ef4f9beecf513adee45, type: 3}
+      propertyPath: allMapConfigs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870664590784096465, guid: 6c25f5841cde5ef4f9beecf513adee45, type: 3}
+      propertyPath: allMapConfigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5da03749c339dec4abd407e2e0cc116e, type: 2}
+    - target: {fileID: 6870664591268394903, guid: 6c25f5841cde5ef4f9beecf513adee45, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 19bf411c79e522b4b8e54f82b0140314, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c25f5841cde5ef4f9beecf513adee45, type: 3}
 --- !u!1001 &1838312106292274056

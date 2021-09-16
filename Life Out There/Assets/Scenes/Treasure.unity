@@ -236,8 +236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: -116}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 12, y: -127}
+  m_SizeDelta: {x: 527.5865, y: 136.0847}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527035573
 MonoBehaviour:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd0161512de6544aaed3e0f260bd404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 0}
+  map: {fileID: 1273078929}
 --- !u!114 &527035574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +465,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 200
+  orthographic size: 300
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -489,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209361106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 300, z: -10}
+  m_LocalPosition: {x: 0, y: 650, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -529,8 +529,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.751404, y: -2}
-  m_SizeDelta: {x: -290, y: -418}
+  m_AnchoredPosition: {x: 4.751404, y: 176.03125}
+  m_SizeDelta: {x: -290, y: -774.0626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241648727
 MonoBehaviour:
@@ -581,12 +581,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 100
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 100
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -723,6 +723,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37f4ff1d9fdcca4ea7c9bab9e16f0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1273078929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4676694659731541496, guid: 6c25f5841cde5ef4f9beecf513adee45, type: 3}
+  m_PrefabInstance: {fileID: 1273078927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1975069992
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +916,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.5
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

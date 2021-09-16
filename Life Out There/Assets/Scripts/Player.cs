@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
 {
     #region PlayerStats
 
-    [SerializeField] private int playerHealth = 2;
-    [SerializeField] private int maxPlayerHealth = 2;
+    private int playerHealth;
+    [SerializeField] private int maxPlayerHealth = 50;
 
     [SerializeField] private int playerBlock = 0;
     [SerializeField] private int playerGold = 99;
@@ -55,7 +55,8 @@ public class Player : MonoBehaviour
         //{
         //    Debug.Log("Card:"+);
         //}
-        currentHealth.SetText(playerHealth.ToString());
+        playerHealth = PlayerPrefs.GetInt("PlayerCurrentHealth");
+        currentHealth.SetText(PlayerPrefs.GetInt("PlayerCurrentHealth").ToString());
         maxHealth.SetText(maxPlayerHealth.ToString());
         
         for (int i = 0; i < 5; i++)
@@ -149,7 +150,7 @@ public class Player : MonoBehaviour
             }
         }
             playerHealth -= damageAmmount;
-        
+        PlayerPrefs.SetInt("PlayerCurrentHealth", playerHealth);
     }
     public void PlayerDealDamage()
     {

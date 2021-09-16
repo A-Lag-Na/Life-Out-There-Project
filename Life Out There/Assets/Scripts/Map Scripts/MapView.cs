@@ -17,6 +17,7 @@ namespace Map
 
         public MapManager mapManager;
         public MapOrientation orientation;
+        //public GameObject mapLegend;
 
         [Tooltip(
             "List of all the MapConfig scriptable objects from the Assets folder that might be used to construct maps. " +
@@ -123,8 +124,15 @@ namespace Map
             firstParent = new GameObject("OuterMapParent");
             var mapCanvas = firstParent.AddComponent<Canvas>();
             mapCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            
             mapParent = new GameObject("MapParentWithAScroll");
             mapParent.transform.SetParent(firstParent.transform);
+
+           // Vector3 legendPos = new Vector3(mapParent.transform.localPosition.x * 50, mapParent.transform.localPosition.y, mapParent.transform.localPosition.z);
+         //   Instantiate(mapLegend, new Vector3(0, 0, 0), Quaternion.identity);
+           // mapLegend.transform.SetParent(mapParent.transform);
+           // mapLegend.transform.localPosition = new Vector3(mapParent.transform.localPosition.x * 10, mapParent.transform.localPosition.y, mapParent.transform.localPosition.z);
+
             var scrollNonUi = mapParent.AddComponent<ScrollNonUI>();
             scrollNonUi.freezeX = orientation == MapOrientation.BottomToTop || orientation == MapOrientation.TopToBottom;
             scrollNonUi.freezeY = orientation == MapOrientation.LeftToRight || orientation == MapOrientation.RightToLeft;

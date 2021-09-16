@@ -83,6 +83,7 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(FadeINTurnBanner());
     }
 
+    //Come Back to this to fix enemy attacking twice
     public void EndEnemyTurn()
     {
         enemiesEndedturn++;

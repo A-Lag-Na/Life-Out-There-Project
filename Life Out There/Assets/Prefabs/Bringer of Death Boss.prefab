@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 871580216250868414}
   m_Layer: 0
   m_Name: Bringer of Death Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   isPlayerTurn: 0
   isAttacking: 0
   isDead: 0
+  isColliderOn: 0
   healthSlider: {fileID: 8802736665230575019}
   health: {fileID: 8802736666537463731}
 --- !u!1 &871580216653518470
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &871580216653518464
 MonoBehaviour:
   m_ObjectHideFlags: 0

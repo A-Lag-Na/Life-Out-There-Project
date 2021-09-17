@@ -17,7 +17,7 @@ namespace Map
 
         public MapManager mapManager;
         public MapOrientation orientation;
-        //public GameObject mapLegend;
+ 
 
         [Tooltip(
             "List of all the MapConfig scriptable objects from the Assets folder that might be used to construct maps. " +
@@ -51,6 +51,7 @@ namespace Map
 
         private GameObject firstParent;
         private GameObject mapParent;
+
         private List<List<Point>> paths;
         private Camera cam;
         // ALL nodes:
@@ -117,6 +118,7 @@ namespace Map
             sr.sprite = background;
             sr.size = new Vector2(xSize, span + yOffset * 2f);
 
+            
         }
 
         private void CreateMapParent()
@@ -139,6 +141,7 @@ namespace Map
             var boxCollider = mapParent.AddComponent<BoxCollider>();
             boxCollider.size = new Vector3(758, 1380, 1);
             boxCollider.center = new Vector3(-50, 442, 0);
+      
         }
 
         private void CreateNodes(IEnumerable<Node> nodes)

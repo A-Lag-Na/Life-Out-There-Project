@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 {
     #region PlayerStats
 
-    private int playerHealth;
+    private int playerHealth = 50;
     [SerializeField] private int maxPlayerHealth = 50;
 
     [SerializeField] private int playerBlock = 0;

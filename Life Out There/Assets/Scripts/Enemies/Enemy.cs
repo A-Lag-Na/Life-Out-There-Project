@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            
+            enemyHealth = 0;
             StartCoroutine("OnDeath");
         }
     }
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Destroy(healthSlider);
         Destroy(gameObject);
         turnSystem.GetComponent<TurnSystem>().EnemyHasDied();

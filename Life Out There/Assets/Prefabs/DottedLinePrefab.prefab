@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3356752528044908946}
   - component: {fileID: 3367089319869640837}
   - component: {fileID: 6778823537629840660}
+  - component: {fileID: 5969529599405050881}
   m_Layer: 0
   m_Name: DottedLinePrefab
   m_TagString: Untagged
@@ -143,3 +144,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleInUpdate: 0
+--- !u!210 &5969529599405050881
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857439060437771865}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2

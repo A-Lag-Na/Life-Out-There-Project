@@ -13,7 +13,8 @@ public class SpawnEnemy : MonoBehaviour
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
-
+    private GameObject player;
+    private Player playerScript;
     #endregion
 
     #region Other
@@ -25,8 +26,13 @@ public class SpawnEnemy : MonoBehaviour
 
     void Awake()
     {
+        player = GameObject.FindWithTag("Player");
+        if (player != null)
+            playerScript = player.GetComponent<Player>();
+
         string sceneName = SceneManager.GetActiveScene().name;
         SetRoomType(sceneName);
+       
     }
 
     // Update is called once per frame
@@ -46,8 +52,8 @@ public class SpawnEnemy : MonoBehaviour
             case "Elite Enemy":
                 RunEliteEnemyRoom();
                 break;
-            case "RestSite":
-
+            case "Rest Site":
+                RunRestSiteRoom();
                 break;
             case "Treasure":
 
@@ -107,6 +113,10 @@ public class SpawnEnemy : MonoBehaviour
         enemyClone.transform.SetParent(gameObject.transform, false);
         //Adds the enemy to spawned enemies list
         spawnedEnemies.Add(enemyClone);
+    }
+    public void RunRestSiteRoom()
+    {
+        playerScript.restSite = true;
     }
     #endregion
 }

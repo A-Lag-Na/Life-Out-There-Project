@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     #endregion
     public Deck deck;
     private bool playerTurn = true;
+    public bool restSite = false;
     List<GameObject> inHand = new List<GameObject>();
     List<c_Card> inDiscardPile = new List<c_Card>();
 
@@ -49,26 +50,28 @@ public class Player : MonoBehaviour
         //syringes = new GameObject[3];
         playerDeck.Clear();
         inHand.Clear();
-
-        playerDeck = deck.GetCards();
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    Debug.Log("Card:"+);
-        //}
-        playerHealth = PlayerPrefs.GetInt("PlayerCurrentHealth");
-        currentHealth.SetText(PlayerPrefs.GetInt("PlayerCurrentHealth").ToString());
-        maxHealth.SetText(maxPlayerHealth.ToString());
-        
-        for (int i = 0; i < 5; i++)
+        if (!restSite)
         {
-            GameObject playerCard =  Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].cardId;
-            playerCard.transform.SetParent(handArea.transform, false);
-            inHand.Add(playerCard);
-        }
+            playerDeck = deck.GetCards();
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Debug.Log("Card:"+);
+            //}
+            playerHealth = PlayerPrefs.GetInt("PlayerCurrentHealth");
+            currentHealth.SetText(PlayerPrefs.GetInt("PlayerCurrentHealth").ToString());
+            maxHealth.SetText(maxPlayerHealth.ToString());
 
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject playerCard = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].cardId;
+                playerCard.transform.SetParent(handArea.transform, false);
+                inHand.Add(playerCard);
+            }
+        }
         if (GetComponent<Animator>() != null)
             anim = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -79,6 +82,7 @@ public class Player : MonoBehaviour
         manaText.SetText(playerMana.ToString() + " / " + maxPlayerMana.ToString());
         if (playerHealth <= 0)
         {
+            playerHealth = 0; 
             StartCoroutine("OnDeath");
         }
     }
@@ -134,8 +138,20 @@ public class Player : MonoBehaviour
             }
         }
 
-        playerBlock -= damage;
-        blockAmmount.SetText(playerBlock.ToString());
+        if (playerBlock >= damage)
+        {
+            playerBlock -= damage;
+            blockAmmount.SetText(playerBlock.ToString());
+        }
+        else
+        {
+            damage -= playerBlock;
+            playerBlock -= playerBlock;
+            blockAmmount.SetText(playerBlock.ToString());
+            RemovePlayerBlock();
+            PlayerTakeDamage(damage);
+        }
+       
 
     }
 
@@ -173,6 +189,11 @@ public class Player : MonoBehaviour
     {
         playerMana = maxPlayerMana;
     }
+    public void ResetHealth()
+    {
+        playerHealth = maxPlayerHealth;
+    }
+
     public void PlayedMana(int cost)
     {
         playerMana -= cost;

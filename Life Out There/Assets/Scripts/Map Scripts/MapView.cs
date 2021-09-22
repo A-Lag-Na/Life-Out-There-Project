@@ -125,10 +125,13 @@ namespace Map
         {
             firstParent = new GameObject("OuterMapParent");
             var mapCanvas = firstParent.AddComponent<Canvas>();
-            mapCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            
+            mapCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+            mapCanvas.worldCamera = Camera.main;
+
             mapParent = new GameObject("MapParentWithAScroll");
             mapParent.transform.SetParent(firstParent.transform);
+            mapParent.transform.localPosition = new Vector3(-180, -700, 0);
+            mapParent.transform.localScale = new Vector3(2, 1.5f, 1.5f);
 
            // Vector3 legendPos = new Vector3(mapParent.transform.localPosition.x * 50, mapParent.transform.localPosition.y, mapParent.transform.localPosition.z);
          //   Instantiate(mapLegend, new Vector3(0, 0, 0), Quaternion.identity);

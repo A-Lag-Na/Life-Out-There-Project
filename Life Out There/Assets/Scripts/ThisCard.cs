@@ -102,12 +102,12 @@ public class ThisCard : MonoBehaviour
                 }
             }
         }
+        enemy = GameObject.FindWithTag("Enemy");
     }
     public void Selection()
     {
         if (isSelected == false)
         {
-
 
             isSelected = true;
             transform.position = new Vector2(transform.position.x, transform.position.y + 50);

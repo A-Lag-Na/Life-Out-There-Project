@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     #region Variable
     #region Stats
     //How much the enemy is worth to the spawner, and how much experience it grants on kill.
-    [SerializeField] private string enemyRank = "Common";
+   public string enemyRank = "Common";
     //How much damage it takes to kill the enemy 
     [SerializeField] private int enemyHealth = 25;
     //How much Health the enemy had at the beginning of combat

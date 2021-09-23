@@ -444,7 +444,7 @@ MonoBehaviour:
   enemyRank: Boss
   enemyHealth: 25
   enemyMaxHealth: 25
-  enemyDamage: 12
+  enemyDamage: 15
   isPlayerTurn: 0
   isAttacking: 0
   isDead: 0

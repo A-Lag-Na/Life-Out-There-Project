@@ -192,6 +192,7 @@ public class Player : MonoBehaviour
     public void ResetHealth()
     {
         playerHealth = maxPlayerHealth;
+        PlayerPrefs.SetInt("PlayerCurrentHealth", maxPlayerHealth);
     }
 
     public void PlayedMana(int cost)

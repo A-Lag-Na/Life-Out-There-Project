@@ -436,7 +436,7 @@ MonoBehaviour:
   enemyRank: Elite
   enemyHealth: 10
   enemyMaxHealth: 10
-  enemyDamage: 10
+  enemyDamage: 5
   isPlayerTurn: 0
   isAttacking: 0
   isDead: 0

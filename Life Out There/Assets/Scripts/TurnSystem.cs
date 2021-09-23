@@ -13,6 +13,7 @@ public class TurnSystem : MonoBehaviour
     public int playerTurnCount;
     public int enemyTurnCount;
     public bool areEnemiesDead = false;
+    public bool isBossRoom = false;
     public GameObject turnBanner;
     public GameObject map;
     public TextMeshProUGUI turntext;
@@ -42,7 +43,13 @@ public class TurnSystem : MonoBehaviour
             spawnAreaScript = spawnArea.GetComponentInParent<SpawnEnemy>();
 
         enemies = spawnAreaScript.GetSpawnedEnemies();
-
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].GetComponent<Enemy>().enemyRank == "Boss")
+            {
+                isBossRoom = true;
+            }
+        }
 
         turntext.SetText("Player Turn");
         StartCoroutine(FadeINTurnBanner());
@@ -100,10 +107,16 @@ public class TurnSystem : MonoBehaviour
         if (enemiesDeadCount == enemies.Count)
         {
             enemiesDeadCount = 0;
-            ///SceneManager.LoadScene("Game End"); 
-            GameObject UI = GameObject.Find("UI");
-            UI.SetActive(false);
-            map.SetActive(true);
+            if (isBossRoom)
+            {
+                SceneManager.LoadScene("Game End");
+            }
+            else
+            {
+                GameObject UI = GameObject.Find("UI");
+                UI.SetActive(false);
+                map.SetActive(true);
+            }
         }
     }
    public IEnumerator FadeOutTurnBanner()

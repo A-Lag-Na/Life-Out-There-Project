@@ -117,7 +117,7 @@ namespace Map
             sr.drawMode = SpriteDrawMode.Sliced;
             sr.sprite = background;
             sr.size = new Vector2(xSize, span + yOffset * 2f);
-
+            sr.sortingOrder = 1;
             
         }
 
@@ -127,6 +127,7 @@ namespace Map
             var mapCanvas = firstParent.AddComponent<Canvas>();
             mapCanvas.renderMode = RenderMode.ScreenSpaceCamera;
             mapCanvas.worldCamera = Camera.main;
+            mapCanvas.sortingOrder = 1;
 
             mapParent = new GameObject("MapParentWithAScroll");
             mapParent.transform.SetParent(firstParent.transform);

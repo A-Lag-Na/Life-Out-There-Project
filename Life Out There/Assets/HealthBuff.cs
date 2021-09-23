@@ -5,14 +5,17 @@ using UnityEngine;
 public class HealthBuff : MonoBehaviour
 {
     private GameObject player;
-    public AudioSource healthsfx;
     private Player playerScript;
+
+    public AudioSource healthsfx;
+    public GameObject map;
 
     private bool isSelected = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        isSelected = false;
         player = GameObject.FindWithTag("Player");
         if (player != null)
             playerScript = player.GetComponent<Player>();
@@ -21,17 +24,20 @@ public class HealthBuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isSelected)
+        if (isSelected && healthsfx.isPlaying == false)
         {
             StartCoroutine(GetSomeRest());
+            GameObject UI = GameObject.Find("UI");
+            UI.SetActive(false);
+            map.SetActive(true);  
         }
 
     }
     IEnumerator GetSomeRest()
     {
-        playerScript.ResetManaCount();
+        playerScript.ResetHealth();
         healthsfx.Play();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
         yield return null;
     }

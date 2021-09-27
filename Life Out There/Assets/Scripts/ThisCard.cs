@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
 
 public class ThisCard : MonoBehaviour
@@ -33,7 +32,6 @@ public class ThisCard : MonoBehaviour
     private GameObject enemyLight;
     private GameObject playerLight;
 
-    private GameObject arrowEmitter;
     private GameObject player;
     private GameObject enemy;
 
@@ -46,7 +44,7 @@ public class ThisCard : MonoBehaviour
 
         enemy = GameObject.FindWithTag("Enemy");
 
-        arrowEmitter = this.transform.Find("ArrowEmitter").gameObject;
+       
     }
 
     // Update is called once per frame
@@ -75,6 +73,10 @@ public class ThisCard : MonoBehaviour
             {
                 if (thisCard.cardType == "Attack")
                 {
+                    if(thisCard.cardName == "Solar Reflection")
+                    {
+                        enemy.GetComponent<Enemy>().AddWeakEffect(1);
+                    }
                     player.GetComponent<Player>().PlayerDealDamage();
                     enemy.GetComponent<Enemy>().TakeDamage(thisCard.damage);
                     if (isenemyOn)
@@ -99,12 +101,12 @@ public class ThisCard : MonoBehaviour
                 }
             }
         }
+        enemy = GameObject.FindWithTag("Enemy");
     }
     public void Selection()
     {
         if (isSelected == false)
         {
-            arrowEmitter.SetActive(true);
 
             isSelected = true;
             transform.position = new Vector2(transform.position.x, transform.position.y + 50);

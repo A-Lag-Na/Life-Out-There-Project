@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     #region Variable
     #region Stats
     //How much the enemy is worth to the spawner, and how much experience it grants on kill.
-    [SerializeField] private string enemyRank = "Common";
+   public string enemyRank = "Common";
     //How much damage it takes to kill the enemy 
     [SerializeField] private int enemyHealth = 25;
     //How much Health the enemy had at the beginning of combat
@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     public bool isPlayerTurn;
     public bool isAttacking = false;
     public bool isDead = false;
+    public bool isColliderOn = false;
+    bool hasWeak = false;
     #endregion
 
 
@@ -34,7 +36,10 @@ public class Enemy : MonoBehaviour
     public GameObject healthSlider;
     //Show the player how much health is in a numerical way
     public TextMeshProUGUI health;
-    
+    public TextMeshProUGUI damage;
+
+    private BoxCollider2D enemyCollider;
+
     //The Player
     private GameObject player;
     private Player playerScript;
@@ -61,12 +66,17 @@ public class Enemy : MonoBehaviour
         
         if (GetComponent<Animator>() != null)
             anim = GetComponent<Animator>();
+
+        if (GetComponent<BoxCollider2D>() != null)
+            enemyCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         health.SetText(enemyHealth.ToString() + " / " + enemyMaxHealth.ToString());
+
+        damage.SetText(enemyDamage.ToString());
 
         if (enemyHealth > 0)
         {
@@ -80,7 +90,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            
+            enemyHealth = 0;
             StartCoroutine("OnDeath");
         }
     }
@@ -112,7 +122,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         Destroy(healthSlider);
         Destroy(gameObject);
         turnSystem.GetComponent<TurnSystem>().EnemyHasDied();
@@ -134,10 +144,14 @@ public class Enemy : MonoBehaviour
             }
             
             //tell player theyre are taking damage to their block;
-            player.GetComponent<Player>().BlockDamage(1);
+            player.GetComponent<Player>().BlockDamage(enemyDamage);
             //Add in delay window between dealing damage to block before ending my turn
             yield return new WaitForSeconds(blockDamageTransDelay);
             //End your turn
+            isAttacking = false;
+            if (hasWeak)
+             RemoveWeakEffect(1);
+
             turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
           
         }
@@ -152,15 +166,18 @@ public class Enemy : MonoBehaviour
                         anim.SetTrigger("Attack");
                 }
 
-                player.GetComponent<Player>().PlayerTakeDamage(1);
+                player.GetComponent<Player>().PlayerTakeDamage(enemyDamage);
                 yield return new WaitForSeconds(blockDamageTransDelay);
+                isAttacking = false;
+                if (hasWeak)
+                    RemoveWeakEffect(1);
 
                 turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
                 
             }
         }
-        isAttacking = false;
-
+        //isAttacking = false;
+        yield return null;
     }
 
 
@@ -180,6 +197,15 @@ public class Enemy : MonoBehaviour
         SetHealth(enemyHealth);
     }
 
+    public void AddWeakEffect(int weakAmmount)
+    {
+        enemyDamage -= weakAmmount;
+        hasWeak = true;
+    }
+    public void RemoveWeakEffect(int weakAmmount)
+    {
+        enemyDamage += weakAmmount;
+    }
     #endregion
 }
 

@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     GameObject music = null;
     #endregion
 
+    public int playerHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class MainMenu : MonoBehaviour
     {
         menu.SetActive(false);
         map.SetActive(true);
+        PlayerPrefs.SetInt("PlayerCurrentHealth", playerHealth);
     }
 
     private void OptionsMenu()

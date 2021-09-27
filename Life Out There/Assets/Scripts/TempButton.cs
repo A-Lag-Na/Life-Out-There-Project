@@ -17,7 +17,6 @@ public class TempButton : MonoBehaviour
 
     private void BacktoMap()
     {
-        Debug.Log("Hit just not working.");
         GameObject screen = GameObject.Find("End Screen");
         screen.SetActive(false);
         map.SetActive(true);

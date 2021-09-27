@@ -141,7 +141,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &3501465580205319850
 MonoBehaviour:
@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 6746199761131337691}
   - component: {fileID: 630816347003431604}
   - component: {fileID: 6142034472940283601}
+  - component: {fileID: 2096857185263999447}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -330,6 +331,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!210 &2096857185263999447
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746199761131337685}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1 &8152473846688106480
 GameObject:
   m_ObjectHideFlags: 0

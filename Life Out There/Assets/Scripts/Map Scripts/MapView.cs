@@ -17,6 +17,7 @@ namespace Map
 
         public MapManager mapManager;
         public MapOrientation orientation;
+ 
 
         [Tooltip(
             "List of all the MapConfig scriptable objects from the Assets folder that might be used to construct maps. " +
@@ -50,6 +51,7 @@ namespace Map
 
         private GameObject firstParent;
         private GameObject mapParent;
+
         private List<List<Point>> paths;
         private Camera cam;
         // ALL nodes:
@@ -115,22 +117,35 @@ namespace Map
             sr.drawMode = SpriteDrawMode.Sliced;
             sr.sprite = background;
             sr.size = new Vector2(xSize, span + yOffset * 2f);
-
+            sr.sortingOrder = 1;
+            
         }
 
         private void CreateMapParent()
         {
             firstParent = new GameObject("OuterMapParent");
             var mapCanvas = firstParent.AddComponent<Canvas>();
-            mapCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            mapCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+            mapCanvas.worldCamera = Camera.main;
+            mapCanvas.sortingOrder = 1;
+
             mapParent = new GameObject("MapParentWithAScroll");
             mapParent.transform.SetParent(firstParent.transform);
+           // mapParent.transform.localPosition = new Vector3(-180, -700, 0);
+            //mapParent.transform.localScale = new Vector3(2, 1.5f, 1.5f);
+
+           // Vector3 legendPos = new Vector3(mapParent.transform.localPosition.x * 50, mapParent.transform.localPosition.y, mapParent.transform.localPosition.z);
+         //   Instantiate(mapLegend, new Vector3(0, 0, 0), Quaternion.identity);
+           // mapLegend.transform.SetParent(mapParent.transform);
+           // mapLegend.transform.localPosition = new Vector3(mapParent.transform.localPosition.x * 10, mapParent.transform.localPosition.y, mapParent.transform.localPosition.z);
+
             var scrollNonUi = mapParent.AddComponent<ScrollNonUI>();
             scrollNonUi.freezeX = orientation == MapOrientation.BottomToTop || orientation == MapOrientation.TopToBottom;
             scrollNonUi.freezeY = orientation == MapOrientation.LeftToRight || orientation == MapOrientation.RightToLeft;
             var boxCollider = mapParent.AddComponent<BoxCollider>();
             boxCollider.size = new Vector3(758, 1380, 1);
             boxCollider.center = new Vector3(-50, 442, 0);
+      
         }
 
         private void CreateNodes(IEnumerable<Node> nodes)

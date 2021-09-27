@@ -64,9 +64,5 @@ namespace Map
             PlayerPrefs.DeleteAll();
         }
 
-        //private void OnDestroy()
-        //{
-        //    PlayerPrefs.DeleteAll();
-        //}
     }
 }

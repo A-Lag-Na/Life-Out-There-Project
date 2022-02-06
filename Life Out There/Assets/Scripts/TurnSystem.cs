@@ -59,10 +59,6 @@ public class TurnSystem : MonoBehaviour
 
     void Update()
     {
-        if (areEnemiesDead)
-        {
-            
-        }
     }
 
     public void EndPlayerTurn()

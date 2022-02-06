@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
 
     #region Components
     //is it the enemies turn
-    private GameObject turnSystem;
+    private GameObject turnSystemObject;
+    private TurnSystem turnSystemScript;
     //Show the player how much health is left
     public GameObject healthSlider;
     //Show the player how much health is in a numerical way
@@ -56,9 +57,13 @@ public class Enemy : MonoBehaviour
         if (player != null)
             playerScript = player.GetComponentInParent<Player>();
       
-        turnSystem = GameObject.Find("TurnSystem");
-        if (turnSystem != null)
-            isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
+        turnSystemObject = GameObject.Find("TurnSystem");
+        if (turnSystemObject != null)
+        {
+            //Only getting the script once saves on performance.
+            turnSystemScript = turnSystemObject.GetComponent<TurnSystem>();
+            isPlayerTurn = turnSystemScript.isPlayerTurn;
+        }
 
         health = healthSlider.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -69,18 +74,24 @@ public class Enemy : MonoBehaviour
 
         if (GetComponent<BoxCollider2D>() != null)
             enemyCollider = GetComponent<BoxCollider2D>();
+
+        if(damage != null)
+        {
+            UpdateDamageText();
+        }
+        if(health != null)
+        {
+            SetHealth(enemyHealth);
+            SetMaxHealth(enemyMaxHealth);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        health.SetText(enemyHealth.ToString() + " / " + enemyMaxHealth.ToString());
-
-        damage.SetText(enemyDamage.ToString());
-
         if (enemyHealth > 0)
         {
-            isPlayerTurn = turnSystem.GetComponent<TurnSystem>().isPlayerTurn;
+            isPlayerTurn = turnSystemScript.isPlayerTurn;
 
             if (!isPlayerTurn)
             {    
@@ -88,16 +99,13 @@ public class Enemy : MonoBehaviour
                  StartCoroutine("DealDamage");
             }
         }
-        else
-        {
-            enemyHealth = 0;
-            StartCoroutine("OnDeath");
-        }
     }
     #region Getters and Setters
-    public void SetHealth(int health)
+    public void SetHealth(int _health)
     {
-        healthSlider.GetComponent<Slider>().value = health;
+        //UI only needs to be updated after game state changes, not every frame.
+        health.SetText(enemyHealth.ToString() + " / " + enemyMaxHealth.ToString());
+        healthSlider.GetComponent<Slider>().value = _health;
     }
     public void SetMaxHealth(int maxHealth)
     {
@@ -125,7 +133,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(healthSlider);
         Destroy(gameObject);
-        turnSystem.GetComponent<TurnSystem>().EnemyHasDied();
+        turnSystemScript.EnemyHasDied();
     }
 
     IEnumerator DealDamage()
@@ -152,7 +160,7 @@ public class Enemy : MonoBehaviour
             if (hasWeak)
              RemoveWeakEffect(1);
 
-            turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
+            turnSystemScript.EndEnemyTurn();
           
         }
         else
@@ -172,16 +180,13 @@ public class Enemy : MonoBehaviour
                 if (hasWeak)
                     RemoveWeakEffect(1);
 
-                turnSystem.GetComponent<TurnSystem>().EndEnemyTurn();
+                turnSystemScript.EndEnemyTurn();
                 
             }
         }
         //isAttacking = false;
         yield return null;
     }
-
-
-
 
     public void TakeDamage(int attackDamage) 
     {
@@ -195,16 +200,28 @@ public class Enemy : MonoBehaviour
         }
         enemyHealth -= attackDamage;
         SetHealth(enemyHealth);
+        //We only need to check for death after enemy takes damage, so I moved the death check here. -P
+        if (enemyHealth < 1)
+        {
+            enemyHealth = 0;
+            StartCoroutine("OnDeath");
+        }
     }
 
     public void AddWeakEffect(int weakAmmount)
     {
         enemyDamage -= weakAmmount;
         hasWeak = true;
+        UpdateDamageText();
     }
     public void RemoveWeakEffect(int weakAmmount)
     {
         enemyDamage += weakAmmount;
+        UpdateDamageText();
+    }
+    public void UpdateDamageText()
+    {
+        damage.SetText(enemyDamage.ToString());
     }
     #endregion
 }

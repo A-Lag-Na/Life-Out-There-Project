@@ -252,10 +252,14 @@ namespace Map
                 case MapOrientation.BottomToTop:
                     if (scrollNonUi != null)
                     {
-                        scrollNonUi.yConstraints.max = 0;
-                        scrollNonUi.yConstraints.min = -(span + 2f * offset);
+                        //scrollNonUi.yConstraints.max = 0;
+                        //scrollNonUi.yConstraints.min = -(span + 2f * offset);
+                        scrollNonUi.yConstraints.max = -400;
+                        scrollNonUi.yConstraints.min = -1200;
                     }
-                    firstParent.transform.localPosition += new Vector3(0, offset, 0);
+                    Vector3 _position = new Vector3(mapParent.transform.position.x + 35, mapParent.transform.position.y, mapParent.transform.position.z);
+                    mapParent.transform.SetPositionAndRotation(_position, mapParent.transform.rotation);
+                    firstParent.transform.localScale = new Vector3(firstParent.transform.localScale.x * 0.42f, firstParent.transform.localScale.y, firstParent.transform.localScale.z);
                     break;
                 case MapOrientation.TopToBottom:
                     mapParent.transform.eulerAngles = new Vector3(0, 0, 180);

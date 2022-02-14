@@ -28,6 +28,7 @@ public class ThisCard : MonoBehaviour
     private bool isPlayerOn = false;
     private bool isEnemyOn = false;
 
+    //Enemy and playerLight can probably be managed through turnsystem, and card highlight can probably be on c_BaseCard and be enabled/disabled through TurnSystem.
     public GameObject cardHighlight;
     private GameObject enemyLight;
     private GameObject playerLight;
@@ -36,6 +37,10 @@ public class ThisCard : MonoBehaviour
     private Player playerScript;
     private GameObject enemy;
     private Enemy enemyScript;
+
+
+    //TODO: Move card selection to its own script, or manage card selection through TurnSystem.
+    //The actual on-play function will be called through c_Card.OnThisCardPlayed() (which is a virtual function overridden by each card.
 
     // Start is called before the first frame update
     public void Start()
@@ -74,12 +79,13 @@ public class ThisCard : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        //There's probably a better way to track this, like maybe a coroutine to detect mouse click after a card is selected, so as to move code out of the Update function.
+        //For now though this is fine.
         if (Input.GetMouseButtonDown(1) && isSelected)
         {
             enemy = GameObject.FindWithTag("Enemy");
             
             TurnSystem.instance.PlayCardHardcoded(this);
-            //gameObject.SetActive(false);
         }
     }
     public void Selection()
@@ -126,7 +132,5 @@ public class ThisCard : MonoBehaviour
             }
             //Debug.Log("This object is de-selected and its position is <" + transform.position + ">");
         }
-
-        
     }
 }

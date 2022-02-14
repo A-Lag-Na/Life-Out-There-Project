@@ -207,6 +207,7 @@ public class TurnSystem : MonoBehaviour
 
     }
     #endregion
+    //TODO: reimplement selection UI (enemyLight/playerLight) code.
     public void PlayCardHardcoded(ThisCard _card)
     {
         if (playerScript.GetManaCount() >= _card.cost)
@@ -223,6 +224,8 @@ public class TurnSystem : MonoBehaviour
                 }
                 else
                 {
+                    //Placeholder example of a specific card being played, in this case the Explorer's Blast card, using the code model where all cards
+                    //have an OnThisCardPlayed() function, where their unique effects are coded.
                     ExplorerAttack e = new ExplorerAttack();
                     e.OnThisCardPlayed();
                 }
@@ -254,9 +257,13 @@ public class TurnSystem : MonoBehaviour
 
     public void ResolveEffect(Effect _effect)
     {
+        //Right now there is no queue for effects, which might be warranted later in development when multiple different effects are activating simultaenously.
+        //They just activate immediately as called.
+        //It may seem silly to jump through the hoops of having a specific card derive from a base card to store its effects and stats, which only activate when TurnSystem calls OnThisCardPlayed()
+        //But it means we can code each card's effect *inside* of that card, and keep the card's data all in one place, and every card uses the same function.
+        //These effects can also be used for enemy attacks and artifacts later, you'll see :)
         switch (_effect.type)
         {
-            
             case Effect.EffectType.Block:
                 {
                     playerScript.AddPlayerBlock(_effect.amount);

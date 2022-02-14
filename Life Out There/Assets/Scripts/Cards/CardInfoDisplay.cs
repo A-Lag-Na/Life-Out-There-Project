@@ -25,24 +25,18 @@ public class CardInfoDisplay : MonoBehaviour
       
 
         tmp = cardType.GetComponent<TextMeshProUGUI>();
-        tmp.SetText(card.cardType);
+        tmp.SetText(card.type);
       
 
         tmp = cardDescription.GetComponent<TextMeshProUGUI>();
-        tmp.SetText(card.cardDescription);
+        tmp.SetText(card.description);
         
 
         tmp = cardCost.GetComponent<TextMeshProUGUI>();
-        tmp.SetText(card.cardCost.ToString());
+        tmp.SetText(card.cost.ToString());
       
 
         Image art = artwork.GetComponent<Image>();
-        art.sprite = card.thisImage;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        art.sprite = card.thisImage;  
     }
 }

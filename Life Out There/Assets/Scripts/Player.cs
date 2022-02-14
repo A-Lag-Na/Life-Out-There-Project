@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public GameObject handArea;
     public TextMeshProUGUI currentHealth;
     public TextMeshProUGUI maxHealth;
-    public TextMeshProUGUI blockAmmount;
+    public TextMeshProUGUI blockAmount;
 
     public GameObject Block;
 
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 GameObject playerCard = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-                playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].cardId;
+                playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].id;
                 playerCard.transform.SetParent(handArea.transform, false);
                 inHand.Add(playerCard);
             }
@@ -76,15 +76,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        currentHealth.SetText(playerHealth.ToString());
-        maxHealth.SetText(maxPlayerHealth.ToString());
-
-        manaText.SetText(playerMana.ToString() + " / " + maxPlayerMana.ToString());
-        if (playerHealth <= 0)
-        {
-            playerHealth = 0; 
-            StartCoroutine("OnDeath");
-        }
     }
 
     IEnumerator OnDeath()
@@ -110,7 +101,7 @@ public class Player : MonoBehaviour
         Block.SetActive(true);
         hasBlock = true;
         playerBlock += blockCard.block;
-        blockAmmount.SetText(playerBlock.ToString());
+        blockAmount.SetText(playerBlock.ToString());
     }
 
 
@@ -119,7 +110,7 @@ public class Player : MonoBehaviour
         Block.SetActive(false);
         hasBlock = false;
         playerBlock = 0;
-        blockAmmount.SetText(playerBlock.ToString());
+        blockAmount.SetText(playerBlock.ToString());
 
     }
     public bool PlayerHasBlock()
@@ -141,21 +132,26 @@ public class Player : MonoBehaviour
         if (playerBlock >= damage)
         {
             playerBlock -= damage;
-            blockAmmount.SetText(playerBlock.ToString());
+            blockAmount.SetText(playerBlock.ToString());
         }
         else
         {
             damage -= playerBlock;
             playerBlock -= playerBlock;
-            blockAmmount.SetText(playerBlock.ToString());
+            blockAmount.SetText(playerBlock.ToString());
             RemovePlayerBlock();
             PlayerTakeDamage(damage);
         }
        
 
     }
-
-    public void PlayerTakeDamage(int damageAmmount)
+    public void UpdateHud()
+    {
+        currentHealth.SetText(playerHealth.ToString());
+        maxHealth.SetText(maxPlayerHealth.ToString());
+        manaText.SetText(playerMana.ToString() + " / " + maxPlayerMana.ToString());
+    }
+    public void PlayerTakeDamage(int damageAmount)
     {
         if (anim != null)
         {
@@ -165,8 +161,13 @@ public class Player : MonoBehaviour
                     anim.SetTrigger("TakeDamage");
             }
         }
-            playerHealth -= damageAmmount;
+        playerHealth -= damageAmount;
         PlayerPrefs.SetInt("PlayerCurrentHealth", playerHealth);
+        if (playerHealth <= 0)
+        {
+            playerHealth = 0;
+            StartCoroutine("OnDeath");
+        }
     }
     public void PlayerDealDamage()
     {
@@ -193,11 +194,13 @@ public class Player : MonoBehaviour
     {
         playerHealth = maxPlayerHealth;
         PlayerPrefs.SetInt("PlayerCurrentHealth", maxPlayerHealth);
+        UpdateHud();
     }
 
     public void PlayedMana(int cost)
     {
         playerMana -= cost;
+        UpdateHud();
     }
 
     public void DiscardHand()
@@ -217,7 +220,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameObject playerCard = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].cardId;
+            playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].id;
             playerCard.transform.SetParent(handArea.transform, false);
             inHand.Add(playerCard);
         }

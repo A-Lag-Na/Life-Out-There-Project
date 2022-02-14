@@ -208,15 +208,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void AddWeakEffect(int weakAmmount)
+    public void AddWeakEffect(int weakAmount)
     {
-        enemyDamage -= weakAmmount;
+        enemyDamage -= weakAmount;
         hasWeak = true;
         UpdateDamageText();
     }
-    public void RemoveWeakEffect(int weakAmmount)
+    public void RemoveWeakEffect(int weakAmount)
     {
-        enemyDamage += weakAmmount;
+        enemyDamage += weakAmount;
         UpdateDamageText();
     }
     public void UpdateDamageText()

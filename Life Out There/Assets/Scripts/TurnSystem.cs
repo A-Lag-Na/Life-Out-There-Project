@@ -75,7 +75,7 @@ public class TurnSystem : MonoBehaviour
     {
         isPlayerTurn = true;
         playerTurnCount++;
-        if (player.GetComponent<Player>().blockAmmount.text != "0")
+        if (player.GetComponent<Player>().blockAmount.text != "0")
         {
             player.GetComponent<Player>().RemovePlayerBlock();
         }

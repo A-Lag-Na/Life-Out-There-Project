@@ -42,7 +42,7 @@ namespace Map
             if (!dragging) return;
 
             var mousePos = MouseInWorldCoords();
-            Debug.Log(mousePos);
+            //Debug.Log(mousePos);
             transform.position = new Vector3(
                 freezeX ? transform.position.x : mousePos.x - pointerDisplacement.x,
                 freezeY ? transform.position.y : mousePos.y - pointerDisplacement.y,

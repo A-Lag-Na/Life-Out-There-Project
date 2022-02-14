@@ -43,7 +43,6 @@ public class ThisCard : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         enemy = GameObject.FindWithTag("Enemy");
-
        
     }
 
@@ -51,11 +50,11 @@ public class ThisCard : MonoBehaviour
     void Update()
     {
         thisCard = c_CardDatabase.cardDatabase[thisId];
-        id = thisCard.cardId;
-        cost = thisCard.cardCost;
+        id = thisCard.id;
+        cost = thisCard.cost;
         cardName = thisCard.cardName;
-        cardType = thisCard.cardType;
-        cardDescription = thisCard.cardDescription;
+        cardType = thisCard.type;
+        cardDescription = thisCard.description;
 
         thisSprite = thisCard.thisImage;
 
@@ -71,7 +70,7 @@ public class ThisCard : MonoBehaviour
           
             if (player.GetComponent<Player>().GetManaCount() >= cost)
             {
-                if (thisCard.cardType == "Attack")
+                if (thisCard.type == "Attack")
                 {
                     if(thisCard.cardName == "Solar Reflection")
                     {
@@ -88,7 +87,7 @@ public class ThisCard : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (thisCard.cardType == "Skill")
+                else if (thisCard.type == "Skill")
                 {
                     player.GetComponent<Player>().AddPlayerBlock(thisCard);
                     if (isplayerOn)

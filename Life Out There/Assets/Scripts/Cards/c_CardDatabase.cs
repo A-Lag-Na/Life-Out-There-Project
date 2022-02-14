@@ -29,7 +29,7 @@ public class c_CardDatabase : MonoBehaviour
             Sprite thisImage = Resources.Load<Sprite>(data[i]["Appearance"].ToString());
 
             string cardCharacter = data[i]["Character"].ToString();
-            //string cardRarity = data[i]["Rarity"].ToString();
+            string cardRarity = data[i]["Rarity"].ToString();
 
             bool exhaust;
             if (data[i]["Exhaust"].ToString() == "TRUE")
@@ -46,16 +46,32 @@ public class c_CardDatabase : MonoBehaviour
             int damage = int.Parse(data[i]["Damage"].ToString(), System.Globalization.NumberStyles.Integer);
             int block = int.Parse(data[i]["Block"].ToString(), System.Globalization.NumberStyles.Integer);
 
-            //Hard coded rarity
-            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, 0, exhaust, damage, block, upgrade);
+            //Hard coded rarity, cause I changed it from a string to an int.
+            AddCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, cardRarity, exhaust, damage, block, upgrade);
         }
     }
 
-    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, c_Card.Rarity rarity, bool exhaust, int damage, int block, bool upgrade)
+    //These started throwing "ScriptableObject must be created with ScriptableObject.Instantiate()... so I just cut out the tempCard altogether.
+    //void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, c_Card.Rarity rarity, bool exhaust, int damage, int block, bool upgrade)
+    //{
+    //    cardDatabase.Add(new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, rarity, exhaust, damage, block, upgrade));
+    //}
+    void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string rarity, bool exhaust, int damage, int block, bool upgrade)
     {
-        c_Card tempCard = new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, rarity, exhaust, damage, block, upgrade);
-
-        cardDatabase.Add(tempCard);
+        //c_Card temp = ScriptableObject.CreateInstance<c_Card>();
+        //temp.id = cardId;
+        //temp.cost = cardCost;
+        //temp.cardName = cardName;
+        //temp.type = cardType;
+        //temp.description = cardDescription;
+        //temp.thisImage = thisImage;
+        //temp.character = cardCharacter;
+        //temp.rarity = 0;
+        //temp.exhaust = exhaust;
+        //temp.damage = damage;
+        //temp.block = block;
+        //temp.upgraded = upgrade;
+        cardDatabase.Add(new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, 0, exhaust, damage, block, upgrade));
     }
 
     public static List<c_Card> CreateExplorerStartDeck(List<c_Card> deck)

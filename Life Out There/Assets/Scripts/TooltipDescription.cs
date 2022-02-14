@@ -32,7 +32,7 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-            Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerEnter");
+            //Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerEnter");
             if (eventData.pointerCurrentRaycast.gameObject.layer == 7)
             {
                 tooltip.transform.position = eventData.position;
@@ -46,7 +46,7 @@ public class TooltipDescription : MonoBehaviour,IPointerEnterHandler, IPointerEx
 
     public void OnPointerExit(PointerEventData eventData)
     {
-         Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerExit");
+         //Debug.Log(eventData.pointerCurrentRaycast.gameObject + "OnPointerExit");
          // tooltipText.SetText("This is a tooltip.");
          if (eventData.pointerCurrentRaycast.gameObject.layer != 7)
          {

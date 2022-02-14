@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+//Player REALLY should be a prefab
 public class Player : MonoBehaviour
 {
     #region PlayerStats
@@ -96,11 +97,11 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene("Game End");
     }
 
-    public void AddPlayerBlock(c_Card blockCard)
+    public void AddPlayerBlock(int block)
     {
         Block.SetActive(true);
         hasBlock = true;
-        playerBlock += blockCard.block;
+        playerBlock += block;
         blockAmount.SetText(playerBlock.ToString());
     }
 
@@ -169,6 +170,7 @@ public class Player : MonoBehaviour
             StartCoroutine("OnDeath");
         }
     }
+    //Runs player Attack animaiton
     public void PlayerDealDamage()
     {
         if (anim != null)

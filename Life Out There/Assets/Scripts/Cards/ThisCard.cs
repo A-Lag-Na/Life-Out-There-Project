@@ -6,7 +6,7 @@ using TMPro;
 
 public class ThisCard : MonoBehaviour
 {
-    public static c_Card thisCard;
+    public c_Card thisCard;
     public int thisId;
 
     public int id;
@@ -25,82 +25,62 @@ public class ThisCard : MonoBehaviour
     public Image thatImage;
 
     private bool isSelected = false;
-    private bool isplayerOn = false;
-    private bool isenemyOn = false;
+    private bool isPlayerOn = false;
+    private bool isEnemyOn = false;
 
     public GameObject cardHighlight;
     private GameObject enemyLight;
     private GameObject playerLight;
 
     private GameObject player;
+    private Player playerScript;
     private GameObject enemy;
+    private Enemy enemyScript;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         thisCard = c_CardDatabase.cardDatabase[thisId];
 
         player = GameObject.FindWithTag("Player");
+        if(player != null)
+        {
+            playerScript = player.GetComponent<Player>();
+        }
 
         enemy = GameObject.FindWithTag("Enemy");
-       
-    }
+        if (enemy != null)
+        {
+            enemyScript = enemy.GetComponent<Enemy>();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
         thisCard = c_CardDatabase.cardDatabase[thisId];
         id = thisCard.id;
         cost = thisCard.cost;
         cardName = thisCard.cardName;
         cardType = thisCard.type;
         cardDescription = thisCard.description;
-
+        
         thisSprite = thisCard.thisImage;
-
+        
         nameText.SetText(cardName);
         costText.SetText(cost.ToString());
         typeText.SetText(cardType);
         descText.SetText(cardDescription);
-
+        
         thatImage.sprite = thisSprite;
+    }
 
+    // Update is called once per frame
+    public void Update()
+    {
         if (Input.GetMouseButtonDown(1) && isSelected)
         {
-          
-            if (player.GetComponent<Player>().GetManaCount() >= cost)
-            {
-                if (thisCard.type == "Attack")
-                {
-                    if(thisCard.cardName == "Solar Reflection")
-                    {
-                        enemy.GetComponent<Enemy>().AddWeakEffect(1);
-                    }
-                    player.GetComponent<Player>().PlayerDealDamage();
-                    enemy.GetComponent<Enemy>().TakeDamage(thisCard.damage);
-                    if (isenemyOn)
-                    {
-                        enemyLight.SetActive(false);
-                        isenemyOn = false;
-                    }
-                    player.GetComponent<Player>().PlayedMana(cost);
-                    Destroy(gameObject);
-
-                }
-                else if (thisCard.type == "Skill")
-                {
-                    player.GetComponent<Player>().AddPlayerBlock(thisCard);
-                    if (isplayerOn)
-                    {
-                        playerLight.SetActive(false);
-                        isplayerOn = false;
-                    }
-                    player.GetComponent<Player>().PlayedMana(cost);
-                    Destroy(gameObject);
-                }
-            }
+            enemy = GameObject.FindWithTag("Enemy");
+            
+            TurnSystem.instance.PlayCardHardcoded(this);
+            //gameObject.SetActive(false);
         }
-        enemy = GameObject.FindWithTag("Enemy");
     }
     public void Selection()
     {
@@ -116,14 +96,14 @@ public class ThisCard : MonoBehaviour
             {
                enemyLight = enemy.transform.GetChild(0).gameObject;
                enemyLight.SetActive(true);
-               isenemyOn = true;
+               isEnemyOn = true;
               //Debug.Log("This object is <" + cardName + "> and its highlight is <" + enemyLight.name + ">");
             }
             else if (cardType == "Skill")
             {
                 playerLight = player.transform.GetChild(0).gameObject;
                 playerLight.SetActive(true);
-                isplayerOn = true;
+                isPlayerOn = true;
                 //Debug.Log("This object is <" + cardName + "> and its highlight is <" + playerLight.name + ">");
             }
 
@@ -134,15 +114,15 @@ public class ThisCard : MonoBehaviour
             cardHighlight.SetActive(false);
             transform.position = new Vector2(transform.position.x, transform.position.y - 50);
 
-            if (isplayerOn)
+            if (isPlayerOn)
             {
                 playerLight.SetActive(false);
-                isplayerOn = false;
+                isPlayerOn = false;
             }
-            else if (isenemyOn)
+            else if (isEnemyOn)
             {
                 enemyLight.SetActive(false);
-                isenemyOn = false;
+                isEnemyOn = false;
             }
             //Debug.Log("This object is de-selected and its position is <" + transform.position + ">");
         }

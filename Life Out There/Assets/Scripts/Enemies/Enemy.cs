@@ -31,8 +31,8 @@ public class Enemy : MonoBehaviour
 
     #region Components
     //is it the enemies turn
-    private GameObject turnSystemObject;
-    private TurnSystem turnSystemScript;
+    //TurnSystem is accessed through TurnSystem.instance now.
+
     //Show the player how much health is left
     public GameObject healthSlider;
     //Show the player how much health is in a numerical way
@@ -57,13 +57,8 @@ public class Enemy : MonoBehaviour
         if (player != null)
             playerScript = player.GetComponentInParent<Player>();
       
-        turnSystemObject = GameObject.Find("TurnSystem");
-        if (turnSystemObject != null)
-        {
-            //Only getting the script once saves on performance.
-            turnSystemScript = turnSystemObject.GetComponent<TurnSystem>();
-            isPlayerTurn = turnSystemScript.isPlayerTurn;
-        }
+        //
+        isPlayerTurn = TurnSystem.instance.isPlayerTurn;
 
         health = healthSlider.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -91,8 +86,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHealth > 0)
         {
-            isPlayerTurn = turnSystemScript.isPlayerTurn;
-
+            isPlayerTurn = TurnSystem.instance.isPlayerTurn;
             if (!isPlayerTurn)
             {    
                if(!isAttacking)
@@ -133,7 +127,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(healthSlider);
         Destroy(gameObject);
-        turnSystemScript.EnemyHasDied();
+        TurnSystem.instance.EnemyHasDied();
     }
 
     IEnumerator DealDamage()
@@ -160,7 +154,7 @@ public class Enemy : MonoBehaviour
             if (hasWeak)
              RemoveWeakEffect(1);
 
-            turnSystemScript.EndEnemyTurn();
+            TurnSystem.instance.EndEnemyTurn();
           
         }
         else
@@ -180,7 +174,7 @@ public class Enemy : MonoBehaviour
                 if (hasWeak)
                     RemoveWeakEffect(1);
 
-                turnSystemScript.EndEnemyTurn();
+                TurnSystem.instance.EndEnemyTurn();
                 
             }
         }

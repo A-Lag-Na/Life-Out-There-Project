@@ -14,12 +14,15 @@ public class ExplorerAttack : c_Card
     public ExplorerAttack()
         : base (_id, _cost, _name, _type, _description, _sprite, _rarity)
     {
-        damage = _damage;
+        //damage = _damage;
+        damage = 6;
         this.tags.Add("BASIC_ATTACK");
     }
     override public void OnThisCardPlayed()
     {
         //Add attack to the selected target onto the GameStateManager/ActionManager stack.
+        Effect attack = new Effect(Effect.EffectType.Attack, damage);
+        TurnSystem.instance.ResolveEffect(attack);
     }
 
     public override void upgrade()

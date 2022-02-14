@@ -6,8 +6,8 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour
 {
     private bool isSelected = false;
-    private bool isplayerOn = false;
-    private bool isenemyOn = false;
+    private bool isPlayerOn = false;
+    private bool isEnemyOn = false;
 
     public GameObject arrowEmitter;
     public GameObject cardHighlight;
@@ -50,14 +50,14 @@ public class DragDrop : MonoBehaviour
             {
                 enemyLight = enemy.transform.GetChild(0).gameObject;
                 enemyLight.SetActive(true);
-                isenemyOn = true;
+                isEnemyOn = true;
                 Debug.Log("This object is <" + this.name + "> and its highlight is <" + enemyLight.name + ">");
             }
             else if (this.name == "BlockCard(Clone)")
             {
                 playerLight = player.transform.GetChild(0).gameObject;
                 playerLight.SetActive(true);
-                isplayerOn = true;
+                isPlayerOn = true;
                 Debug.Log("This object is <" + this.name + "> and its highlight is <" + playerLight.name + ">");
             }
 
@@ -68,15 +68,15 @@ public class DragDrop : MonoBehaviour
             cardHighlight.SetActive(false);
             transform.position = new Vector2(transform.position.x, transform.position.y - 50);
            
-            if (isplayerOn)
+            if (isPlayerOn)
             {
                 playerLight.SetActive(false);
-                isplayerOn = false;
+                isPlayerOn = false;
             }
-            else if(isenemyOn)
+            else if(isEnemyOn)
             {
                 enemyLight.SetActive(false);
-                isenemyOn = false;
+                isEnemyOn = false;
             }
             //Debug.Log("This object is de-selected and its position is <" + transform.position + ">");
         }

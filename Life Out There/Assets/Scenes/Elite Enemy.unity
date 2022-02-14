@@ -1620,9 +1620,10 @@ MonoBehaviour:
   handArea: {fileID: 1837711482}
   currentHealth: {fileID: 1309319118}
   maxHealth: {fileID: 675629853}
-  blockAmmount: {fileID: 2101530752}
+  blockAmount: {fileID: 2101530752}
   Block: {fileID: 1554578384}
   deck: {fileID: 963305106}
+  restSite: 0
   cardPrefab: {fileID: 93413513353197798, guid: d29eef78de878334e9a7862dbfb212b1, type: 3}
 --- !u!95 &693777385
 Animator:
@@ -2313,6 +2314,7 @@ MonoBehaviour:
   playerTurnCount: 0
   enemyTurnCount: 0
   areEnemiesDead: 0
+  isBossRoom: 0
   turnBanner: {fileID: 1994869024}
   map: {fileID: 1830896350}
   turntext: {fileID: 1277330725}
@@ -5143,7 +5145,7 @@ GameObject:
   - component: {fileID: 2101530751}
   - component: {fileID: 2101530752}
   m_Layer: 5
-  m_Name: Block Ammount
+  m_Name: Block Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

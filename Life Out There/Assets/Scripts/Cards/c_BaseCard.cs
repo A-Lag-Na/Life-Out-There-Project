@@ -63,7 +63,7 @@ using UnityEngine.UI;
 
 //}
 #endregion
-public class c_Card : ScriptableObject
+public class c_Card
 {
     public enum Rarity
     {
@@ -98,7 +98,7 @@ public class c_Card : ScriptableObject
     public Rarity rarity;
     public Sprite thisImage;
     //Tags are for things that effect all "Blast" cards, or all Basic Strikes/Defends, for example.
-    public List<string> tags;
+    public List<string> tags = new List<string>();
     #endregion
 
     #region keywords
@@ -148,6 +148,25 @@ public class c_Card : ScriptableObject
     #endregion
     #endregion
 
+    public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
+    {
+        id = CardId;
+        cost = CardCost;
+        damage = Damage;
+        block = Block;
+
+        cardName = CardName;
+        type = CardType;
+        description = CardDescription;
+        character = CardCharacter;
+        //rarity = CardRarity;
+        rarity = Rarity.none;
+
+        exhaust = Exhaust;
+        upgraded = Upgrade;
+
+        thisImage = ThisImage;
+    }
     public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, Rarity CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {
         id = CardId;
@@ -189,7 +208,7 @@ public class c_Card : ScriptableObject
     {
         id = _id;
         cost = _cost;
-        name = _name;
+        cardName = _name;
         type = _type;
         description = _description;
         thisImage = _sprite;

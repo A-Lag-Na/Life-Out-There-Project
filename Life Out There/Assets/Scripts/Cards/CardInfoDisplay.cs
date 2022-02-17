@@ -7,7 +7,7 @@ using TMPro;
 
 public class CardInfoDisplay : MonoBehaviour
 {
-    public c_Card card;
+    public c_BaseCard card;
 
     public GameObject cardName;
     public GameObject cardType;

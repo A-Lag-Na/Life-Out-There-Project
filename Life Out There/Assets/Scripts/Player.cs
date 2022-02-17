@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     #region PlayerStats
 
-    private int playerHealth = 50;
+    [SerializeField] private int playerHealth = 50;
     [SerializeField] private int maxPlayerHealth = 50;
 
     [SerializeField] private int playerBlock = 0;
@@ -34,9 +34,9 @@ public class Player : MonoBehaviour
     private bool playerTurn = true;
     public bool restSite = false;
     List<GameObject> inHand = new List<GameObject>();
-    List<c_Card> inDiscardPile = new List<c_Card>();
+    List<c_BaseCard> inDiscardPile = new List<c_BaseCard>();
 
-    List<c_Card> playerDeck = new List<c_Card>();
+    List<c_BaseCard> playerDeck = new List<c_BaseCard>();
     private GameObject selectedCard = null;
     //GameObject[] syringes;
     private Animator anim;

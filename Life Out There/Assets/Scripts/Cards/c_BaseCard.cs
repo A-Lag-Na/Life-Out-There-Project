@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [System.Serializable]
 
 #region OldCode
-//public class c_Card : ScriptableObject
+//public class c_BaseCard : ScriptableObject
 //{
 //    public int cardId;
 //    public int cardCost;
@@ -23,7 +23,7 @@ using UnityEngine.UI;
 
 //    public Sprite thisImage;
 
-//    public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
+//    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
 //    {
 //       cardId = CardId; 
 //       cardCost = CardCost;
@@ -42,7 +42,7 @@ using UnityEngine.UI;
 //       thisImage = ThisImage;
 //    } 
 
-//    public c_Card(c_Card c)
+//    public c_BaseCard(c_BaseCard c)
 //    {
 //        cardId = c.cardId;
 //        cardCost = c.cardCost;
@@ -63,7 +63,7 @@ using UnityEngine.UI;
 
 //}
 #endregion
-public class c_Card
+public class c_BaseCard
 {
     public enum Rarity
     {
@@ -77,6 +77,7 @@ public class c_Card
     public int id;
     public int cost;
     public int damage;
+    public int selfDamage;
     public int block;
     public int heal;
     public int draw;
@@ -148,7 +149,7 @@ public class c_Card
     #endregion
     #endregion
 
-    public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
+    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {
         id = CardId;
         cost = CardCost;
@@ -167,7 +168,7 @@ public class c_Card
 
         thisImage = ThisImage;
     }
-    public c_Card(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, Rarity CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
+    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, Rarity CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {
         id = CardId;
         cost = CardCost;
@@ -186,7 +187,7 @@ public class c_Card
         thisImage = ThisImage;
     }
 
-    public c_Card(c_Card c)
+    public c_BaseCard(c_BaseCard c)
     {
         id = c.id;
         cost = c.cost;
@@ -204,7 +205,7 @@ public class c_Card
 
         thisImage = c.thisImage;
     }
-    public c_Card(int _id, int _cost, string _name, string _type, string _description, Sprite _sprite, Rarity _rarity) 
+    public c_BaseCard(int _id, int _cost, string _name, string _type, string _description, Sprite _sprite, Rarity _rarity) 
     {
         id = _id;
         cost = _cost;
@@ -235,7 +236,7 @@ public class c_Card
 
     public virtual void upgrade() { }
 
-    public virtual void OnThisCardPlayed() { }
+    public virtual void OnThisCardPlayed(GameObject _target) { }
 
     //I've looked into implementing an interface so as to re-use these triggers among multiple classes, but it seems genuinely more effective to just rewrite them.
     #region Triggers
@@ -246,9 +247,9 @@ public class c_Card
     public virtual void OnUsesAttack(int _combatant) { }
     public virtual void OnIsAttacked(int _combatant) { }
     public virtual void OnDeath(int _combatant) { }
-    public virtual void OnCardPlayed(c_Card _card) { }
-    public virtual void OnCardDiscarded(c_Card _card) { }
-    public virtual void OnCardExhausted(c_Card _card) { }
+    public virtual void OnCardPlayed(c_BaseCard _card) { }
+    public virtual void OnCardDiscarded(c_BaseCard _card) { }
+    public virtual void OnCardExhausted(c_BaseCard _card) { }
     #endregion
 
 }

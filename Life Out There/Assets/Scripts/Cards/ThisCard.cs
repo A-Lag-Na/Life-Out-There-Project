@@ -6,7 +6,7 @@ using TMPro;
 
 public class ThisCard : MonoBehaviour
 {
-    public c_Card thisCard;
+    public c_BaseCard thisCard;
     public int thisId;
 
     public int id;
@@ -40,7 +40,7 @@ public class ThisCard : MonoBehaviour
 
 
     //TODO: Move card selection to its own script, or manage card selection through TurnSystem.
-    //The actual on-play function will be called through c_Card.OnThisCardPlayed() (which is a virtual function overridden by each card.
+    //The actual on-play function will be called through c_BaseCard.OnThisCardPlayed() (which is a virtual function overridden by each card.
 
     // Start is called before the first frame update
     public void Start()
@@ -81,11 +81,29 @@ public class ThisCard : MonoBehaviour
     {
         //There's probably a better way to track this, like maybe a coroutine to detect mouse click after a card is selected, so as to move code out of the Update function.
         //For now though this is fine.
-        if (Input.GetMouseButtonDown(1) && isSelected)
+        if (isSelected && (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)))
         {
-            enemy = GameObject.FindWithTag("Enemy");
-            
-            TurnSystem.instance.PlayCardHardcoded(this);
+            if(Input.GetMouseButtonDown(1))
+            {
+                enemy = GameObject.FindWithTag("Enemy");
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                enemy = GameObject.FindGameObjectsWithTag("Enemy")[0];
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                enemy = GameObject.FindGameObjectsWithTag("Enemy")[1];
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                enemy = GameObject.FindGameObjectsWithTag("Enemy")[2];
+            }
+            if(enemy == null)
+            {
+                Debug.LogError("Tried to play a card on a null target. Source: ThisCard.cs Update()");
+            }
+            TurnSystem.instance.PlayCardHardcoded(this, enemy);
         }
     }
     public void Selection()

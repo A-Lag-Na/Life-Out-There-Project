@@ -7,10 +7,11 @@ using TMPro;
 
 public class Effect
 {
-    public Effect(EffectType _type, int _amount)
+    public Effect(EffectType _type, int _amount, GameObject _target = null)
     {
         type = _type;
         amount = _amount;
+        target = _target;
     }
     public enum EffectType
     {
@@ -22,6 +23,7 @@ public class Effect
     public EffectType type;
     //public Enemy target;
     public int amount;
+    public GameObject target;
 
 }
 
@@ -208,14 +210,14 @@ public class TurnSystem : MonoBehaviour
     }
     #endregion
     //TODO: reimplement selection UI (enemyLight/playerLight) code.
-    public void PlayCardHardcoded(ThisCard _card)
+    //Target 0 = player, 1 is enemy1, 2 is enemy2, 3 is enemy3
+    public void PlayCardHardcoded(ThisCard _card, GameObject _enemy)
     {
         if (playerScript.GetManaCount() >= _card.cost)
         {
             if (_card.cardType == "Attack")
             {
-                GameObject enemy = GameObject.FindWithTag("Enemy");
-                Enemy enemyScript = enemy.GetComponent<Enemy>();
+                Enemy enemyScript = _enemy.GetComponent<Enemy>();
                 if (_card.cardName == "Solar Reflection")
                 {
                     enemyScript.AddWeakEffect(1);
@@ -227,7 +229,7 @@ public class TurnSystem : MonoBehaviour
                     //Placeholder example of a specific card being played, in this case the Explorer's Blast card, using the code model where all cards
                     //have an OnThisCardPlayed() function, where their unique effects are coded.
                     ExplorerAttack e = new ExplorerAttack();
-                    e.OnThisCardPlayed();
+                    e.OnThisCardPlayed(_enemy);
                 }
                 //if (isEnemyOn)
                 //{
@@ -246,7 +248,6 @@ public class TurnSystem : MonoBehaviour
                 
             }
             playerScript.PlayedMana(_card.cost);
-            //Destroy(_cardObject);
             Destroy(_card.gameObject);
         }
         else
@@ -271,16 +272,14 @@ public class TurnSystem : MonoBehaviour
                 }
             case Effect.EffectType.Attack:
                 {
-                    GameObject enemy = GameObject.FindWithTag("Enemy");
-                    Enemy enemyScript = enemy.GetComponent<Enemy>();
+                    Enemy enemyScript = _effect.target.GetComponent<Enemy>();
                     playerScript.PlayerDealDamage();
                     enemyScript.TakeDamage(_effect.amount);
                     break;
                 }
             case Effect.EffectType.Weak:
                 {
-                    GameObject enemy = GameObject.FindWithTag("Enemy");
-                    Enemy enemyScript = enemy.GetComponent<Enemy>();
+                    Enemy enemyScript = _effect.target.GetComponent<Enemy>();
                     enemyScript.AddWeakEffect(_effect.amount);
                     break;
                 }

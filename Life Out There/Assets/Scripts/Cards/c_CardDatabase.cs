@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class c_CardDatabase : MonoBehaviour
 {
-    public static List<c_Card> cardDatabase = new List<c_Card>();
+    public static List<c_BaseCard> cardDatabase = new List<c_BaseCard>();
 
     void Awake()
     {
@@ -52,13 +52,13 @@ public class c_CardDatabase : MonoBehaviour
     }
 
     //These started throwing "ScriptableObject must be created with ScriptableObject.Instantiate()... so I just cut out the tempCard altogether.
-    //void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, c_Card.Rarity rarity, bool exhaust, int damage, int block, bool upgrade)
+    //void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, c_BaseCard.Rarity rarity, bool exhaust, int damage, int block, bool upgrade)
     //{
-    //    cardDatabase.Add(new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, rarity, exhaust, damage, block, upgrade));
+    //    cardDatabase.Add(new c_BaseCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, rarity, exhaust, damage, block, upgrade));
     //}
     void AddCard(int cardId, int cardCost, string cardName, string cardType, string cardDescription, Sprite thisImage, string cardCharacter, string rarity, bool exhaust, int damage, int block, bool upgrade)
     {
-        //c_Card temp = ScriptableObject.CreateInstance<c_Card>();
+        //c_BaseCard temp = ScriptableObject.CreateInstance<c_BaseCard>();
         //temp.id = cardId;
         //temp.cost = cardCost;
         //temp.cardName = cardName;
@@ -71,10 +71,10 @@ public class c_CardDatabase : MonoBehaviour
         //temp.damage = damage;
         //temp.block = block;
         //temp.upgraded = upgrade;
-        cardDatabase.Add(new c_Card(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, 0, exhaust, damage, block, upgrade));
+        cardDatabase.Add(new c_BaseCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, 0, exhaust, damage, block, upgrade));
     }
 
-    public static List<c_Card> CreateExplorerStartDeck(List<c_Card> deck)
+    public static List<c_BaseCard> CreateExplorerStartDeck(List<c_BaseCard> deck)
     {
         for (int i = 0; i < cardDatabase.Count; i++)
         {
@@ -97,7 +97,6 @@ public class c_CardDatabase : MonoBehaviour
                 deck.Add(cardDatabase[i]);
             }
         }
-
         return deck;
     }
 }

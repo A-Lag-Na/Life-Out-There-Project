@@ -8,7 +8,7 @@ using TMPro;
 
 public class Deck : MonoBehaviour
 {
-    public static List<c_Card> deck = new List<c_Card>();
+    public static List<c_BaseCard> deck = new List<c_BaseCard>();
 
     public GameObject cardInDeck;
     public GameObject cardInDeck1;
@@ -38,19 +38,19 @@ public class Deck : MonoBehaviour
             cardInDeck1.SetActive(false);
     }
 
-    public void AddCard(c_Card _card)
+    public void AddCard(c_BaseCard _card)
     {
         deck.Add(_card);
     }
 
-    public List<c_Card> GetCards()
+    public List<c_BaseCard> GetCards()
     {
         return deck;
     }
 
     public void Shuffle()
     {
-        c_Card temp;
+        c_BaseCard temp;
 
         for (int i = 0; i < deck.Count; i++)
         {

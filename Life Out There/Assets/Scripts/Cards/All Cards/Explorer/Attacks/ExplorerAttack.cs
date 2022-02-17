@@ -12,9 +12,15 @@ public class ExplorerAttack : c_BaseCard
     private static Rarity _rarity;
 
     public ExplorerAttack()
-        : base (_id, _cost, _name, _type, _description, _sprite, _rarity)
+        : base ()
+        //: base (_id, _cost, _name, _type, _description, _sprite, _rarity)
     {
-        //damage = _damage;
+        cost = 1;
+        cardName = "Blast";
+        type = "Attack";
+        description = "Deal 6 damage.";
+        thisImage = _sprite;
+        //Damage here might need to be split up into two variables, baseDamage and totalDamage, where totalDamage is the output after modifiers such as strength.
         damage = 6;
         this.tags.Add("BASIC_ATTACK");
     }

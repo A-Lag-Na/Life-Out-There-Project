@@ -97,7 +97,8 @@ public class c_BaseCard
     public string character;
     //public string rarity;
     public Rarity rarity;
-    public Sprite thisImage;
+    //How to get Unity to associate a Sprite with a script that isn't attached to a gameobject?
+    [SerializeField] public Sprite thisImage;
     //Tags are for things that effect all "Blast" cards, or all Basic Strikes/Defends, for example.
     public List<string> tags = new List<string>();
     #endregion
@@ -149,6 +150,8 @@ public class c_BaseCard
     #endregion
     #endregion
 
+    //TODO: Clean up unused Contructors
+    #region Constructors
     public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {
         id = CardId;
@@ -233,6 +236,63 @@ public class c_BaseCard
         upgraded = false;
         timesUpgraded = 0;
     }
+    public c_BaseCard(string _name, string _type, string _description, Sprite _sprite, Rarity _rarity)
+    {
+        id = -1;
+        cost = 99;
+        cardName = _name;
+        type = _type;
+        description = _description;
+        thisImage = _sprite;
+        rarity = _rarity;
+
+        character = "null";
+
+        damage = -1;
+        block = -1;
+        heal = -1;
+        draw = -1;
+        discard = -1;
+        energyOnUse = -1;
+        shopPrice = -1;
+        magicNumber = -1;
+
+        exhaust = false;
+        selfRetain = false;
+        isMultiDamage = false;
+
+        upgraded = false;
+        timesUpgraded = 0;
+    }
+    public c_BaseCard()
+    {
+        id = -1;
+        cost = 99;
+        cardName = "Uninit. Name";
+        type = "Uninit. Type";
+        description = "Uninit. Description";
+        //thisImage = null
+        rarity = Rarity.none;
+
+        character = "null";
+
+        damage = -1;
+        block = -1;
+        heal = -1;
+        draw = -1;
+        discard = -1;
+        energyOnUse = -1;
+        shopPrice = -1;
+        magicNumber = -1;
+
+        exhaust = false;
+        selfRetain = false;
+        isMultiDamage = false;
+
+        upgraded = false;
+        timesUpgraded = 0;
+    }
+    #endregion
 
     public virtual void upgrade() { }
 

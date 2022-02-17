@@ -45,7 +45,14 @@ public class ThisCard : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        thisCard = c_CardDatabase.cardDatabase[thisId];
+        if(thisId > 0)
+        {
+            thisCard = c_CardDatabase.cardDatabase[thisId];
+        }
+        else
+        {
+            thisCard = new ExplorerAttack();
+        }
 
         player = GameObject.FindWithTag("Player");
         if(player != null)
@@ -58,8 +65,6 @@ public class ThisCard : MonoBehaviour
         {
             enemyScript = enemy.GetComponent<Enemy>();
         }
-
-        thisCard = c_CardDatabase.cardDatabase[thisId];
         id = thisCard.id;
         cost = thisCard.cost;
         cardName = thisCard.cardName;

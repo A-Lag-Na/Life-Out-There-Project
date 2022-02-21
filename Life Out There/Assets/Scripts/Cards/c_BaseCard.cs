@@ -157,6 +157,7 @@ public class c_BaseCard
     #endregion
 
     //TODO: Clean up unused Contructors
+    //TODO: Function that updates description, for use on card upgrade.
     #region Constructors
     public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, Character CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {

@@ -65,8 +65,8 @@ public class Player : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 GameObject playerCard = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-                //playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].id;
-                playerCard.GetComponent<ThisCard>().thisId = -1;
+                playerCard.GetComponent<ThisCard>().thisId = playerDeck[i].id;
+                //playerCard.GetComponent<ThisCard>().thisId = -1;
                 playerCard.transform.SetParent(handArea.transform, false);
                 inHand.Add(playerCard);
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 //rename script to basic blast when finished.
 //Specific card extending base class prototype.
-public class Blast : c_BaseCard
+public class Blast : ExplorerAttackTemplate
 {
     private static int _id, _cost, _damage, _upgradeDamage;
     private static string _name, _type, _description;
@@ -17,15 +17,8 @@ public class Blast : c_BaseCard
     {
         cost = 1;
         damage = 6;
-        cardName = "Blast";
-        character = Character.explorer;
-        type = "Attack";
-        description = "Deal " + damage + " damage.";
-        //thisImage = _sprite;
-        //Damage here might need to be split up into two variables, baseDamage and totalDamage, where totalDamage is the output after modifiers such as strength.
+        description = "Deal " + damage + ".";
         _upgradeDamage = 3;
-        this.tags.Add("BASIC_ATTACK");
-        thisImage = Resources.Load<Sprite>("Card Art/BlastArt");
     }
     override public void OnThisCardPlayed(GameObject _target)
     {

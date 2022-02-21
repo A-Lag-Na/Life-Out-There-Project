@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//TODO: Clean this up.
 public class ThisCard : MonoBehaviour
 {
     public c_BaseCard thisCard;
@@ -45,13 +46,30 @@ public class ThisCard : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if(thisId > 0)
+        //TODO: Find a way to pass in a variable, and create the relevant card based on that variable, without hardcoding a switch.
+        switch (thisId)
         {
-            thisCard = c_CardDatabase.cardDatabase[thisId];
-        }
-        else
-        {
-            thisCard = new Blast();
+            case 34:
+                {
+                    thisCard = new Phalanx();
+                    break;
+                }
+            case 174:
+                {
+                    thisCard = c_CardDatabase.cardDatabase[174];
+                    break;
+                }
+            case 176:
+                {
+                    //thisCard = c_CardDatabase.cardDatabase[176];
+                    thisCard = new Blast();
+                    break;
+                }
+            case 180:
+                {
+                    thisCard = c_CardDatabase.cardDatabase[180];
+                    break;
+                }
         }
 
         player = GameObject.FindWithTag("Player");

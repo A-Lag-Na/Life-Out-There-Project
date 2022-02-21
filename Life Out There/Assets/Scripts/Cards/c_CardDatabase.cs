@@ -85,16 +85,24 @@ public class c_CardDatabase : MonoBehaviour
                     deck.Add(cardDatabase[i]);
                 }
             }
-            else if(cardDatabase[i].cardName == "Blast" && !cardDatabase[i].upgraded)
+            //else if(cardDatabase[i].cardName == "Blast" && !cardDatabase[i].upgraded)
+            //{
+            //    for (int j = 0; j < 4; j++)
+            //    {
+            //        deck.Add(cardDatabase[i]);
+            //    }
+            //}
+            else if(cardDatabase[i].cardName == "Solar Reflection" && !cardDatabase[i].upgraded)
+            {
+                deck.Add(cardDatabase[i]);
+            }
+            //Replaced Blast with this for testing purposes
+            else if (cardDatabase[i].cardName == "Phalanx Formation" && !cardDatabase[i].upgraded)
             {
                 for (int j = 0; j < 4; j++)
                 {
                     deck.Add(cardDatabase[i]);
                 }
-            }
-            else if(cardDatabase[i].cardName == "Solar Reflection" && !cardDatabase[i].upgraded)
-            {
-                deck.Add(cardDatabase[i]);
             }
         }
         return deck;

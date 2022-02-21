@@ -71,7 +71,7 @@ public class c_CardDatabase : MonoBehaviour
         //temp.damage = damage;
         //temp.block = block;
         //temp.upgraded = upgrade;
-        cardDatabase.Add(new c_BaseCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, cardCharacter, 0, exhaust, damage, block, upgrade));
+        cardDatabase.Add(new c_BaseCard(cardId, cardCost, cardName, cardType, cardDescription, thisImage, 0, 0, exhaust, damage, block, upgrade));
     }
 
     public static List<c_BaseCard> CreateExplorerStartDeck(List<c_BaseCard> deck)

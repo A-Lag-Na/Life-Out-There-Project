@@ -72,6 +72,12 @@ public class c_BaseCard
         uncommon,
         rare
     }
+    public enum Character
+    {
+        none,
+        explorer,
+        extinct
+    }
     #region attributes
     #region basic stats
     public int id;
@@ -94,7 +100,7 @@ public class c_BaseCard
     public string cardName;
     public string type;
     public string description;
-    public string character;
+    public Character character;
     //public string rarity;
     public Rarity rarity;
     //How to get Unity to associate a Sprite with a script that isn't attached to a gameobject?
@@ -152,7 +158,7 @@ public class c_BaseCard
 
     //TODO: Clean up unused Contructors
     #region Constructors
-    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
+    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, Character CardCharacter, string CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {
         id = CardId;
         cost = CardCost;
@@ -162,7 +168,7 @@ public class c_BaseCard
         cardName = CardName;
         type = CardType;
         description = CardDescription;
-        character = CardCharacter;
+        character = Character.none;
         //rarity = CardRarity;
         rarity = Rarity.none;
 
@@ -171,7 +177,7 @@ public class c_BaseCard
 
         thisImage = ThisImage;
     }
-    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, string CardCharacter, Rarity CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
+    public c_BaseCard(int CardId, int CardCost, string CardName, string CardType, string CardDescription, Sprite ThisImage, Character CardCharacter, Rarity CardRarity, bool Exhaust, int Damage, int Block, bool Upgrade)
     {
         id = CardId;
         cost = CardCost;
@@ -181,7 +187,7 @@ public class c_BaseCard
         cardName = CardName;
         type = CardType;
         description = CardDescription;
-        character = CardCharacter;
+        character = Character.none;
         rarity = CardRarity;
 
         exhaust = Exhaust;
@@ -218,7 +224,7 @@ public class c_BaseCard
         thisImage = _sprite;
         rarity = _rarity;
         
-        character = "null";
+        character = Character.none;
 
         damage = -1;
         block = -1;
@@ -246,7 +252,7 @@ public class c_BaseCard
         thisImage = _sprite;
         rarity = _rarity;
 
-        character = "null";
+        character = Character.none;
 
         damage = -1;
         block = -1;
@@ -271,10 +277,9 @@ public class c_BaseCard
         cardName = "Uninit. Name";
         type = "Uninit. Type";
         description = "Uninit. Description";
-        //thisImage = null
         rarity = Rarity.none;
 
-        character = "null";
+        character = Character.none;
 
         damage = -1;
         block = -1;

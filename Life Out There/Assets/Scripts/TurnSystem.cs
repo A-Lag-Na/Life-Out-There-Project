@@ -228,7 +228,7 @@ public class TurnSystem : MonoBehaviour
                 {
                     //Placeholder example of a specific card being played, in this case the Explorer's Blast card, using the code model where all cards
                     //have an OnThisCardPlayed() function, where their unique effects are coded.
-                    ExplorerAttack e = new ExplorerAttack();
+                    Blast e = new Blast();
                     e.OnThisCardPlayed(_enemy);
                 }
                 //if (isEnemyOn)

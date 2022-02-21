@@ -51,7 +51,7 @@ public class ThisCard : MonoBehaviour
         }
         else
         {
-            thisCard = new ExplorerAttack();
+            thisCard = new Blast();
         }
 
         player = GameObject.FindWithTag("Player");
